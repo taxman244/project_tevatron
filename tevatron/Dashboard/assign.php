@@ -128,7 +128,7 @@ try{
 		$run->bindParam(':class6', $assign_class_id);
 		$run->bindParam(':class7', $assign_class_id);
 		$run->bindParam(':class8', $assign_class_id);
-		$run->exectue();
+		$run->execute();
 
 		$return = $run->fetchALL(PDO::FETCH_ASSOC);
 

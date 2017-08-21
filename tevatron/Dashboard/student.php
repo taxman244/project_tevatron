@@ -43,7 +43,7 @@ try{
 
 			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
 			$run->bindParam(':code', $join);
-			$run->exectue();
+			$run->execute();
 
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
@@ -56,7 +56,7 @@ try{
 
 			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
 			$run->bindParam(":session", $session);
-			$run->exectue();
+			$run->execute();
 
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
@@ -65,50 +65,50 @@ try{
 				$run = $dbh->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class2'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class3'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class4'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class5'] == NULL){
 
 				$run = $dbh->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class6'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class7'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class8'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} else{
 				//insert error for too many classes
