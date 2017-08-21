@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Student Dashboard</title>
+	<title>Teacher Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../login.css">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
@@ -599,23 +599,32 @@
 			<div id="tab-classes" style="display: none;">
 				<div class="widget" style="width: 725px;">
 					<center>
-						<div class="head" style="background: #FF6E2D"><p>Current Classes</p></div>
+						<div class="head" style="background: #FF6E2D">
+							<p style="float: left;margin-left: 47.5%;margin-top:0px;margin-bottom: 0px;width: 5%">Students</p>
+							<form name="message" method="post" style="float: right;margin-right: 15px;margin-top: 14px;">
+
+								<select id="classStudent">
+									<option value="12346">Class Name 1</option>
+									<option value="12121">Class Name 2</option>
+									<option value="21212">Class Name 3</option>
+								</select>
+								<input type="submit" name="login" action='post' class="btn-primary" value="Choose Class">
+							</form>
+							
+						</div>
 						<div class="body" style="height: 300px;">
 						<div>
-							<div style="width: 125px;float: left;margin-left: 25px;">
-								<p>Physics</p>
+							<div style="width: 225px;float: left;margin-left: 25px;">
+								<p>Roger Janusiak</p>
 							</div>
-							<div style="width: 200px;float: left;">
-								<p>Mr. Venne</p>
-							</div>
-							<div style="width: 125px;float: left;">
-								<p>4th Hour</p>
+							<div style="width: 225px;float: left;">
+								<p>oaksapling</p>
 							</div>
 							<div style="width: 125px;float: left;">
-								<p>2016/17</p>
+								<p>Update</p>
 							</div>
-							<div style="width: 75px;float: left;">
-								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
+							<div style="width: 100px;float: left;">
+								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Remove</p>
 							</div>
 						</div>
 						</div>

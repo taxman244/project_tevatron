@@ -1,7 +1,7 @@
 <?php
 
 function filter($string) {
-#test
+
   return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
 
 }
