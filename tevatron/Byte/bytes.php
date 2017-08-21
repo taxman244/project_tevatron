@@ -66,25 +66,25 @@ try{
       
       var number = 0;
 
-      var questions = [
+      var questions = 
         <?php 
         echo json_encode($quesions);
         ?>
-      ];
+      ;
 
       var correctAnswer = [0,0,0,0,0,0,0,0,0,0];
 
-      var answers = [
+      var answers = 
         <?php
         echo json_encode($answers);
         ?>
-      ];
+      ;
 
-      var why = [
+      var why =
         <?php
         echo json_encode($why);
         ?>
-      ];
+      ;
 
       var answerConfiguration = [];
       var questionConfiguration = [];
