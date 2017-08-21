@@ -37,7 +37,7 @@ try{
 	if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 
-			$join = 123;
+			$join = filter($_POST ["cjcode"]);
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 
@@ -50,7 +50,14 @@ try{
 			if ($return[0]['code'] != $join){
 				#error for incorect code
 			}	else {
+			
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
 
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+			$class_id = $return [0]['class_id'];
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 

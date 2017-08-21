@@ -137,6 +137,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+			if ($return[0]['code'] != $join){
+				#error for incorect code
+			}	else {
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+			$class_id = $return [0]['class_id'];
+
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+
 			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
 			$run->bindParam(":session", $session);
 			$run->execute();
@@ -197,7 +218,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				//insert error for too many classes
 				//also kill it so the code down below dosent run and we dont create ghost classes
 			}
-
+}
 
 		} catch(PDOException $e){
 			//insert error here
