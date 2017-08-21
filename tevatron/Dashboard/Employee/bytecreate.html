@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" id="index" type="text/css" href="../../CSS/index.css">
+		<link rel="stylesheet" id="login" type="text/css" href="../../CSS/login.css">
+		<link rel="stylesheet" id="inputs" type="text/css" href="../../CSS/inputs.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			function adjustStyle(width) {
+			  width = parseInt(width);
+			  if (width < 800) {
+			    $("#index").attr("href", "../../CSS/index.css");
+			    $("#inputs").attr("href", "../../CSS/inputs.css");
+			    $("#login").attr("href", "../../CSS/login.css");
+			  } else if (width < 1920) {
+			    $("#index").attr("href", "../../CSS/index-2.css");
+			    $("#inputs").attr("href", "../../CSS/inputs-2.css");
+			    $("#login").attr("href", "../../CSS/login.css");
+			  } else {
+			     $("#index").attr("href", "../../CSS/index.css"); 
+			     $("#inputs").attr("href", "../../CSS/inputs.css");
+			     $("#login").attr("href", "../../CSS/login.css");
+			  }
+			}
+
+			$(function() {
+			  adjustStyle($(this).width());
+			  $(window).resize(function() {
+			    adjustStyle($(this).width());
+			  });
+			});
+		</script>
+	</head>
+	<body style="background: #47759E">
+		<div class="navbar">
+			<ul>
+			    <li style="margin-left: 15vw;margin-top: -10px;">
+			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">Pricing</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+			<h1 style="margin-top: 5px;">Project Tevatron</h1>
+			<ul>
+			    <li style="margin-left: 75vw;margin-top: -100px;">
+			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Join a Class</a></li>
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact Us</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+		</div>
+		<div class="container" style="background: transparent;">
+			<center>
+							<div style="width: 25vw;padding-top: 32vh;max-width: 500px;min-width: 250px;">
+					<h1 class='title'>Create Byte</h1>
+					<form name="message" method="post" style="">
+						<input type="text" name="byteId" id="byteId" class="top-input" placeholder="Byte ID">
+						<input type="text" name="byteName" id="byteName" class="middle-input" placeholder="Byte Name">
+						<input type="text" name="byteDesc" id="byteDesc" class="bottom-input" placeholder="Byte Desc.">
+						<select id="subject">
+							<option>Physics</option>
+							<option>Chemistry</option>
+							<option>Music</option>
+						</select>
+						<select id="topic">
+							<option>Uncertainty</option>
+							<option>Motion</option>
+							<option>Tension</option>
+						</select>
+
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 1</h1>
+							<input type="text" id="question1" class="single-input" placeholder="Question">
+							<select id="type1" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer1A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer1B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer1C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer1D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer1D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why1A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why1B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why1C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why1D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 2</h1>
+							<input type="text" id="question2" class="single-input" placeholder="Question">
+							<select id="type2" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer2A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer2B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer2C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer2D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer2D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="WHy2A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why2B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why2C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why2D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 3</h1>
+							<input type="text" id="question3" class="single-input" placeholder="Question">
+							<select id="type3" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer3A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer3B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer3C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer3D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer3D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why3A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why3B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why3C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why3D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 4</h1>
+							<input type="text" id="question4" class="single-input" placeholder="Question">
+							<select id="type4" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer4A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer4B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer4C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer4D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer4D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why4A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why4B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why4C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why4D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 5</h1>
+							<input type="text" id="question5" class="single-input" placeholder="Question">
+							<select id="type5" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer5A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer5B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer5C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer5D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer5D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why5A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why5B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why5C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why5D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 6</h1>
+							<input type="text" id="question6" class="single-input" placeholder="Question">
+							<select id="type6" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer6A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer6B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer6C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer6D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer6D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why6A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why6B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why6C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why6D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 7</h1>
+							<input type="text" id="question7" class="single-input" placeholder="Question">
+							<select id="type7" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer7A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer7B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer7C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer7D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer7D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why7A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why7B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why7C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why7D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 8</h1>
+							<input type="text" id="question8" class="single-input" placeholder="Question">
+							<select id="type8" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer8A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer8B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer8C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer8D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer8D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why8A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why8B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why8C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why8D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 9</h1>
+							<input type="text" id="question9" class="single-input" placeholder="Question">
+							<select id="type9" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer9A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer9B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer9C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer9D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer9D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why9A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why9B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why9C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why9D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<div style="margin-top: 30px;">
+							<h1 class='title'>Question 10</h1>
+							<input type="text" id="question10" class="single-input" placeholder="Question">
+							<select id="type10" style="margin-top: 10px;">
+								<option>Multiple Choice</option>
+								<option>Short Answer</option>
+							</select>
+							<input type="text" style="margin-top: 10px;" id="Answer10A" class="top-input" placeholder="Answer 1 (Correct)">
+							<input type="text" id="Answer10B" class="middle-input" placeholder="Answer 2">
+							<input type="text" id="Answer10C" class="bottom-input" placeholder="Answer 3">
+							<input type="text" id="Answer10D" class="bottom-input" placeholder="Answer 4">
+							<input type="text" style="margin-top: 10px;" id="CAnswer10D" class="single-input" placeholder="Correct Answer">
+							<input type="text" style="margin-top: 10px;" id="Why10A" class="top-input" placeholder="Why 1 (Correct)">
+							<input type="text" id="Why10B" class="middle-input" placeholder="Why 2">
+							<input type="text" id="Why10C" class="bottom-input" placeholder="Why 3">
+							<input type="text" id="Why10D" class="bottom-input" placeholder="Why 4">
+						</div>
+						<input type="submit" name="login" action='post' class="btn-primary" value="Create Byte">
+					</form>
+					<p class="foot">Having issues?</p>
+				</div>
+			</center>
+		</div>
+	</body>
+</html>

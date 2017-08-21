@@ -1,0 +1,211 @@
+<?php
+
+function filter($string) {
+
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
+}
+
+$sql_user = "website_access";
+$sql_pass = "+Hacking1859";
+
+$email_code = $_SERVER['QUERY_STRING'];
+
+if ($email_code == ""){
+	} elseif ($email_code == "error") {
+		$errorHad = true;
+		$error = "You are not logged in!";
+	} elseif ($email_code != "error"){
+
+		$errorHad = true;
+		$error = "Email has been varified";
+
+		try{
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('UPDATE users SET verified = 1 WHERE email_code = :email_code');
+			$run->bindParam(':email_code', $email_code);
+			$run->execute();
+			$dbh = null;
+
+		} catch(PDOException $e) {
+			$errorHad = true;
+			$error = "Seems we could not reach our servers! Please contact an admin.";
+		}
+	}
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	$username = filter($_POST["username"]);
+	$password = filter($_POST["password"]);
+
+		$hash_pass1 = crypt($password, 'bkhwevrehj');
+		$hash_pass2 = crypt($hash_pass1, 'zknlyxufok');
+		$hash_pass_fin = crypt($hash_pass2, 'lamtfinmzg');
+	
+	try{
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('SELECT * FROM users WHERE username = :username');
+		$run->bindParam(':username', $username);
+		$run->execute();
+
+		$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+		$crave = $return[0]["salt"];
+	
+		$spicy = crypt($hash_pass_fin, $crave);
+
+	if ($password == "" OR $username == "") {
+		$errorHad = true;
+		$error = "Please fill out all forms.";
+	}
+
+	$sql_user = "website_access";
+	$sql_pass = "+Hacking1859";
+
+
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('SELECT * FROM users WHERE username = :username');
+		$run->bindParam(':username', $username);
+		$run->execute();
+
+		$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+		if($return[0]["username"]=="") {
+			$errorHad = true;
+			$error = "Account not found!";
+		}else {
+			if($return[0]["password"]== $spicy) {
+
+				if($return[0]["verified"] == 1){
+
+						do {
+
+								$session = mt_rand(1000000000, 9999999999);
+								$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+								$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
+								$run->bindParam(':session', $session);
+								$run->execute();
+
+								$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+
+						} while ($return[0]["session"] == $session);
+
+					$run = $dbh->prepare('UPDATE users SET session = :session WHERE username = :username');
+					$run->bindParam(':session', $session);
+					$run->bindParam(':username', $username);
+					$run->execute();
+
+					
+					$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+					$run = $dbh->prepare('SELECT * FROM users WHERE username = :username');
+					$run->bindParam(':username', $username);
+					$run->execute();
+
+					$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+					setcookie('user', $username);
+					setcookie('session', $session);
+					setcookie('user_type', $return[0]["user_type"]);
+
+					$logins = $return[0]["logins"] + 1;
+					$last_log = date("y/m/d h:i:sa");
+
+					$run = $dbh->prepare('UPDATE users SET logins = :logins, last_log = :last_log WHERE username = :username');
+					$run->bindParam(':logins', $logins);
+					$run->bindParam(':last_log', $last_log);
+					$run->bindParam(':username', $username);
+					$run->execute();
+
+					setcookie('logins', $logins);
+
+					if ($logins < 2){
+						header("Location: http://tevatron.prioritycoding.net/class.php");
+					die();
+					} else {
+						header("Location: http://tevatron.prioritycoding.net/Dashboard/student.php");
+					die();
+					
+					}
+
+
+					
+				}else{
+					$errorHad = true;
+					$error = "account not verified";
+
+				}
+
+			}else{
+				$errorHad = true;
+				$error = "Incorrect Password";	
+			}
+		}
+
+	} catch(PDOException $e) {
+		$errorHad = true;
+			$error = "Seems we could not reach our servers! Please contact an admin.";
+
+
+	}
+}
+?>
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="index.css">
+		<link rel="stylesheet" type="text/css" href="login.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	</head>
+	<body style="background-image: url('img/background.jpg'); background-size: cover;">
+		<div class="navbar">
+			<ul>
+			    <li style="margin-left: 15vw;margin-top: -10px;">
+			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">Pricing</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+			<h1 style="margin-top: 5px;">Project Tevatron</h1>
+			<ul>
+			    <li style="margin-left: 75vw;margin-top: -100px;">
+			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Join a Class</a></li>
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact Us</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+		</div>
+		<div class="container" style="background: transparent;">
+			<center>
+			<?php 
+				if($errorHad == true) {
+					echo '<div class="error-box">';
+						echo '<h4>' . $error . '</h4>';
+					echo '</div>';
+				} 
+			?>
+				<div style="width: 25vw;padding-top: 32vh;max-width: 500px;min-width: 250px;">
+					<h1 class='title'>Login</h1>
+					<form name="message" method="post" style="">
+						<input type="text" name="username" class="top-input" placeholder="Username">
+						<input type="password" name="password" class="bottom-input" placeholder="Password">
+						<input type="submit" name="login" action='post' class="btn-primary" value="Login">
+					</form>
+					<p class="foot">Having issues?</p>
+				</div>
+			</center>
+		</div>
+	</body>
+</html>

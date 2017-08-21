@@ -1,0 +1,245 @@
+/* line 13, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+body {
+  margin: 0;
+}
+
+/* line 17, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav {
+  width: 100vw;
+  height: 60px;
+  background: #47759E;
+  border-bottom: solid 2px #0B5AA2;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 25, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav h2 {
+  font-size: 22px;
+  display: block;
+  padding: 7px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-family: "Merriweather Sans";
+}
+
+/* line 35, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul {
+  text-align: center;
+  color: #FF6E2D;
+}
+
+/* line 37, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li ul.fallback {
+  display: none;
+}
+
+/* line 38, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li:hover ul.fallback {
+  display: block;
+}
+
+/* line 43, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li {
+  float: left;
+  display: inline;
+  font-family: "Merriweather Sans";
+}
+
+/* line 49, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li:hover {
+  background: #71A5D4;
+  border-radius: 5px;
+}
+
+/* line 54, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li a {
+  font-size: 22px;
+  display: block;
+  padding: 7px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/* line 65, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li ul {
+  position: absolute;
+  width: 150px;
+  background: #FFF;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+/* line 73, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li ul li {
+  width: 150px;
+}
+
+/* line 77, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li ul li a {
+  display: block;
+  padding: 15px 10px;
+  color: #444;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: 'Comfortaa';
+}
+
+/* line 78, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+nav ul li ul li a:hover {
+  background: #F7F7F7;
+}
+
+/* line 91, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container {
+  width: 100vw;
+  height: -moz-calc(100vh - 60px);
+  height: -webkit-calc(100vh - 60px);
+  height: -o-calc(100vh - 60px);
+  height: calc(100vh - 60px);
+  background: #47759E;
+}
+
+/* line 101, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container h1 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+  font-size: 2.5em;
+}
+
+/* line 108, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .reason-wrapper {
+  display: none;
+  width: 500px;
+  height: 100px;
+  margin-left: 50vw;
+}
+
+/* line 114, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .reason-wrapper h2 {
+  padding-top: 37px;
+  display: none;
+  margin: 0px;
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+  font-size: 1.3em;
+}
+
+/* line 129, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .answer {
+  display: none;
+  margin-top: -85px;
+  width: 23vw;
+  height: 60px;
+  border: solid 2px rgba(65, 198, 148, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #00A969;
+  background: #20B87F;
+}
+
+/* line 143, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .answer h2 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+
+/* line 153, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .start {
+  margin-top: 25px;
+  width: 12vw;
+  height: 60px;
+  border: solid 2px rgba(255, 184, 83, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #FA9200;
+  background: #FFA82D;
+}
+
+/* line 165, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .start h2 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+
+/* line 176, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .next {
+  display: none;
+  margin-top: 30px;
+  margin-left: 18vw;
+  width: 12vw;
+  height: 60px;
+  border: solid 2px rgba(255, 184, 83, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #FA9200;
+  background: #FFA82D;
+}
+
+/* line 191, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .next h2 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+
+/* line 201, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .yellow {
+  display: none;
+  margin-top: 25px;
+  width: 12vw;
+  height: 60px;
+  border: solid 2px rgba(255, 184, 83, 0.9);
+  border-radius: 10px;
+  box-shadow: 0px 6px 0px #FA9200;
+  background: #FFA82D;
+}
+
+/* line 215, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.container .yellow h2 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+
+/* line 227, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.single-input {
+  display: none;
+  width: 50%;
+  height: 22px;
+  min-width: 150px;
+  max-width: 250px;
+  padding: 11px 10px 11px 13px;
+  margin-top: -10px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border: 0;
+}
+
+/* line 246, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.check {
+  display: none;
+  float: left;
+  width: 200px;
+  margin-left: 25px;
+  margin-top: 0px;
+  height: 60px;
+  border-radius: 10px;
+  border: solid 2px rgba(65, 198, 148, 0.8);
+  box-shadow: 0px 6px 0px #00A969;
+  background: #20B87F;
+}
+
+/* line 259, /Users/rogerjanusiak/Desktop/Project Tevatron/Byte/Sass/byte.scss */
+.check h2 {
+  color: white;
+  font-family: 'Comfortaa', sans-serif;
+  font-weight: normal;
+}
+
+/*# sourceMappingURL=../CSS/byte.map */

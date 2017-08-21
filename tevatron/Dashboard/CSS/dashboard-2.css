@@ -1,0 +1,396 @@
+/* line 13, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+/* line 18, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav {
+  position: fixed;
+  width: 100vw;
+  height: 60px;
+  background: #47759E;
+  border-bottom: solid 2px #0B5AA2;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 27, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav h2 {
+  font-size: 22px;
+  display: block;
+  padding: 7px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+  font-family: "Merriweather Sans";
+}
+
+/* line 37, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul {
+  text-align: center;
+  color: #FF6E2D;
+}
+
+/* line 39, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li ul.fallback {
+  display: none;
+}
+
+/* line 40, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li:hover ul.fallback {
+  display: block;
+}
+
+/* line 45, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li {
+  float: left;
+  display: inline;
+  font-family: "Merriweather Sans";
+}
+
+/* line 51, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li:hover {
+  background: #71A5D4;
+  border-radius: 5px;
+}
+
+/* line 56, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li a {
+  font-size: 22px;
+  display: block;
+  padding: 7px 15px;
+  color: white;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+/* line 67, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li ul {
+  position: absolute;
+  width: 150px;
+  background: #FFF;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+/* line 75, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li ul li {
+  width: 150px;
+}
+
+/* line 79, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li ul li a {
+  display: block;
+  padding: 15px 10px;
+  color: #444;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: 'Comfortaa';
+}
+
+/* line 80, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+nav ul li ul li a:hover {
+  background: #F7F7F7;
+}
+
+/* line 93, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.sidebar {
+  position: fixed;
+  float: left;
+  width: 55px;
+  height: -moz-calc(100vh - 60px);
+  height: -webkit-calc(100vh - 60px);
+  height: -o-calc(100vh - 60px);
+  height: calc(100vh - 60px);
+  background: #20B87F;
+  margin-top: 43px;
+  z-index: 10;
+}
+
+/* line 106, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.sidebar .sidebar-icon {
+  width: 53px;
+  height: 55px;
+  background: #20B87F;
+  margin: 0px;
+  border: 1px inset #6BD8AF;
+}
+
+/* line 113, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.sidebar .sidebar-icon img {
+  width: 38px;
+  height: 38px;
+}
+
+/* line 120, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.sidebar .sidebar-label {
+  display: none;
+  float: right;
+  width: 193px;
+  height: 55px;
+  background: #20B87F;
+  margin-top: -57px;
+  border: 1px inset #6BD8AF;
+}
+
+/* line 129, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.sidebar .sidebar-label p {
+  font-size: 20px;
+  color: white;
+  font-family: "Merriweather Sans";
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+/* line 141, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash {
+  margin-top: 60px;
+  padding-top: 0px;
+  margin-left: -50px;
+  height: -moz-calc(100vh - 60px);
+  height: -webkit-calc(100vh - 60px);
+  height: -o-calc(100vh - 60px);
+  height: calc(100vh - 60px);
+  width: 1000px;
+  z-index: 5;
+}
+
+/* line 154, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget {
+  position: absolute;
+  margin: 0px;
+}
+
+/* line 159, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .head {
+  width: 100%;
+  height: 50px;
+  background: #FFA82D;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+/* line 166, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .head p {
+  color: white;
+  font-family: "Merriweather Sans";
+  font-size: 23px;
+  padding-top: 8px;
+}
+
+/* line 175, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body {
+  width: 100%;
+  background: #E5E5E5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+/* line 185, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body table tr:nth-child(odd) {
+  background-color: #fff;
+}
+
+/* line 189, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body table tr:nth-child(even) {
+  background-color: #eee;
+}
+
+/* line 194, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body table tr td {
+  min-width: 50px;
+  max-width: 50px;
+  padding: 5px;
+  margin: 0px;
+}
+
+/* line 200, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body table tr th {
+  min-width: 50px;
+  max-width: 50px;
+  padding: 5px;
+  margin: 0px;
+}
+
+/* line 208, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body table .wide {
+  min-width: 150px;
+  max-width: 150px;
+}
+
+/* line 215, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body p {
+  margin: 0px;
+  padding-top: 10px;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 17px;
+}
+
+/* line 222, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body h1 {
+  width: 100px;
+  float: left;
+  margin-top: 0px;
+  color: #FA4E00;
+  font-family: "Merriweather Sans";
+  font-size: 23px;
+}
+
+/* line 231, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.dash .widget .body h2 {
+  width: 175px;
+  margin-left: 10px;
+  float: left;
+  text-align: right;
+  margin-top: 3px;
+  margin-bottom: 0px;
+  font-family: "Merriweather Sans";
+  font-weight: normal;
+  font-size: 20px;
+}
+
+/* line 249, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* line 253, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+}
+
+/* line 258, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* line 263, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column {
+  width: -moz-calc(25vw - 5px);
+  width: -webkit-calc(25vw - 5px);
+  width: -o-calc(25vw - 5px);
+  width: calc(25vw - 5px);
+  height: 100vh;
+  float: left;
+  border-right: solid 5px #20B87F;
+}
+
+/* line 272, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column h1 {
+  margin-top: 80px;
+  font-family: "Merriweather Sans";
+  margin-left: 35px;
+  font-size: 30px;
+}
+
+/* line 279, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column #preview-content {
+  display: none;
+}
+
+/* line 283, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column p {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 20px;
+  float: left;
+  margin-top: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+/* line 292, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column hr {
+  width: 100%;
+  background-color: #ece8e0;
+  border: 0;
+  height: 2px;
+}
+
+/* line 299, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column img {
+  margin-top: 10px;
+  width: 80%;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+
+/* line 306, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column h2 {
+  text-align: center;
+  font-family: "Merriweather Sans";
+  margin-top: 30px;
+}
+
+/* line 313, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column center input {
+  margin-top: 30px;
+  width: 220px;
+}
+
+/* line 319, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column div {
+  width: 90%;
+  height: 30px;
+  margin-left: 10%;
+  padding-bottom: 0px;
+  margin-top: 15px;
+}
+
+/* line 326, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column div .name {
+  width: 90%;
+}
+
+/* line 330, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.column div .arrow {
+  width: 10%;
+}
+
+/* line 339, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.darken {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  opacity: 0.7;
+  background: black;
+  display: none;
+}
+
+/* line 347, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.addWindow {
+  display: none;
+  position: absolute;
+  width: 20vw;
+  height: auto;
+  margin-left: 41.5vw;
+  margin-top: 27.5vh;
+  background: white;
+  border-radius: 5px;
+  border: solid 1px black;
+  padding: 30px;
+}
+
+/* line 359, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.addWindow h2 {
+  text-align: center;
+  font-family: "Merriweather Sans";
+  margin-top: 0px;
+}
+
+/* line 364, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.addWindow h3 {
+  text-align: center;
+  font-family: "Merriweather Sans";
+}
+
+/* line 368, /Users/rogerjanusiak/Desktop/Project Tevatron/Dashboard/SASS/dashboard-2.scss */
+.addWindow .addByteInput {
+  border: 0.5px solid #20B87F;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=../CSS/dashboard-2.map */

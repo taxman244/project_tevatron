@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" id="index" type="text/css" href="../CSS/index.css">
+		<link rel="stylesheet" id="info" type="text/css" href="CSS/info.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			function adjustStyle(width) {
+			  width = parseInt(width);
+			  if (width < 800) {
+			    $("#index").attr("href", "../CSS/index.css");
+			    $("#info").attr("href", "CSS/info.css");
+			  } else if (width < 1920) {
+			    $("#index").attr("href", "../CSS/index-2.css");
+			    $("#info").attr("href", "CSS/info-2.css");
+			  } else {
+			     $("#index").attr("href", "../CSS/index.css"); 
+			     $("#info").attr("href", "CSS/info.css");
+			  }
+			}
+
+			$(function() {
+			  adjustStyle($(this).width());
+			  $(window).resize(function() {
+			    adjustStyle($(this).width());
+			  });
+			});
+		</script>
+	</head>
+	<body>
+		<div class="navbar">
+			<ul>
+			    <li style="margin-left: 15vw;margin-top: -10px;">
+			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">Pricing</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+			<h1 style="margin-top: 5px;">Project Tevatron</h1>
+			<ul>
+			    <li style="margin-left: 75vw;margin-top: -100px;">
+			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
+			      <ul class="fallback">
+			        <li><a href="#">Join a Class</a></li>
+			        <li><a href="#">Sign Up</a></li>
+			        <li><a href="#">More Info</a></li>
+			        <li><a href="#">Contact Us</a></li>
+			      </ul>
+			    </li>
+		  	</ul>
+		</div>
+		<div class="container" style="background: white;">
+			<center>
+				<h1 class="page-title">Let's talk numbers.</h1>
+				<div class="price-wrapper" style="background: #FF6E2D;">
+					<h1>Teacher</h1>
+					<p>1 teacher</p>
+					<h2>$30/yr</h2>
+				</div>
+				<div class="price-wrapper" style="background: #FFA82D;">
+					<h1>Department</h1>
+					<p>8 to 19 teachers</p>
+					<h2>$25/yr</h2>
+				</div>
+				<div class="price-wrapper" style="background: #2A72B2;">
+					<h1>Entire School</h1>
+					<p>20 - 149 teachers</p>
+					<h2>$20/yr</h2>
+				</div>
+				<div class="price-wrapper" style="background: #20B87F;">
+					<h1>District</h1>
+					<p>150+ teachers</p>
+					<h2>$15/yr</h2>
+				</div>
+				<h1 class="subtitle">Is one of these not right for you?</h1>
+				<h2>We offer Alpha and Beta tester discounts!</h2>
+				<input type="submit" class="button" value="Find Out More">
+			</center>
+		</div>
+		<div class="footer">
+			<div>
+				<h1>Important Links</h1>
+				<p>About Us</p>
+				<p>Pricing</p>
+				<p>Student Portal</p>
+				<p>Teacher Portal</p>
+				<p>Account Managment</p>
+			</div>
+			<div>
+				<h1>Subjects</h1>
+				<p>Physics</p>
+				<p>Chemistry</p>
+				<p>Ecology</p>
+				<p>More Soon!</p>
+			</div>
+			<h1 id="qoute">What are you waiting for?</h1>
+			<form name="message" method="post" style="">
+				<input id="concern" type="text" name="concern" class="txt" placeholder="What's your concern?">
+				<input type="submit" action="post" name="submit-concern" class="btn" value="Submit Concern">
+			</form>
+			<div>
+				<h1>Contact Us</h1>
+				<p>Staff Bio's</p>
+				<p>Contact Staff</p>
+				<p>District Request</p>
+				<p>School Registration</p>
+				<p>Customer Services</p>
+			</div>
+			<div>
+				<h1>Value Points</h1>
+				<p>Content</p>
+				<p>Tracking</p>
+				<p>Gamification</p>
+				<p>Affordable</p>
+			</div>
+		</div>
+	</body>
+</html>

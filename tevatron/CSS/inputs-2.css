@@ -1,0 +1,64 @@
+/* line 1, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.input, .top-input, .single-input, .middle-input, .bottom-input {
+  width: 70%;
+  height: 22px;
+  min-width: 150px;
+  max-width: 250px;
+  padding: 11px 10px 11px 13px;
+}
+
+/* line 9, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.top-input {
+  margin-top: -10px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border: 0;
+}
+
+/* line 20, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.single-input {
+  margin-top: -10px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border: 0;
+}
+
+/* line 33, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.middle-input {
+  margin-top: -2px;
+  border: 0;
+  border-top: 1px solid #C0C0C0;
+}
+
+/* line 42, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.bottom-input {
+  margin-top: -2px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border: 0;
+  border-top: 1px solid #C0C0C0;
+}
+
+/* line 54, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.btn-primary {
+  margin-top: 20px;
+  height: 35px;
+  width: 50%;
+  min-width: 110px;
+  background: #20B87F;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+/* line 70, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/inputs-2.scss */
+.btn-primary:hover {
+  background: #00A969;
+  border: 1px solid #307287;
+  border-radius: 10px;
+}
+
+/*# sourceMappingURL=../CSS/inputs-2.map */

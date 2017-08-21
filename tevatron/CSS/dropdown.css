@@ -1,0 +1,2 @@
+div ul li ul.fallback {display:none;}
+div ul li:hover ul.fallback {display:block;}

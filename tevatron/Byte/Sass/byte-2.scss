@@ -1,0 +1,233 @@
+$full-width: 100vw;
+$wrapper-height: 45vh;
+$image-height: 50vh;
+$navbar-height: 60px;
+
+$color-green: #20B87F;
+$color-red: #FF6E2D;
+$color-orange:#FFA82D;
+$color-teal: #47759E;
+
+$small-button: 18vw;
+
+$font: 'Merriweather Sans';
+
+body {
+    margin: 0;
+}
+
+nav {
+    width: 100vw;
+    height: $navbar-height;
+    background: $color-teal;
+    border-bottom: solid 2px #0B5AA2;
+    margin: 0px;
+    padding: 0px;
+
+    h2 {
+        font-size: 22px;
+        display:block;
+        padding:7px 15px;
+        color: white;
+        text-decoration: none;
+        font-weight: normal;
+        font-family: $font;
+    }
+
+    #dropDown {
+        float: right;
+        margin-right: 5vw;
+        margin-top: 10px;
+    }
+
+    ul {
+
+        li ul.fallback {display:none;}
+        li:hover ul.fallback {display:block;}
+
+        text-align:center;
+        color: #FF6E2D;
+        margin-top: 0px;
+        margin-bottom: 0px;
+
+        li {
+
+            
+            display:inline;
+            font-family: $font;
+
+            &:hover {
+                background:#71A5D4;
+                border-radius: 5px;
+            }
+            a {
+
+                font-size: 22px;
+                display:block;
+                padding:7px 15px;
+                color: white;
+                text-decoration: none;
+                font-weight: normal;
+
+            }
+
+            ul {
+                
+                position:absolute;
+                width:150px;
+                background:#FFF;
+                padding: 0px;
+                border-radius: 5px;
+
+                li {
+                    
+                    width:150px;
+                    
+                    a {display:block;padding:15px 10px;color:#444;font-size: 15px;font-weight: normal;font-family: 'Comfortaa';
+                       &:hover {background:#F7F7F7;}
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+}
+
+.container {
+    width: $full-width;
+
+    height: -moz-calc(100vh - 60px);
+    height: -webkit-calc(100vh - 60px);
+    height: -o-calc(100vh - 60px);
+    height: calc(100vh - 60px);
+
+    background: $color-teal;
+
+    h1 {
+        color: white;
+        font-family: 'Comfortaa', sans-serif;
+        font-weight: normal;
+        font-size: 2.5em;
+    }
+
+    .reason-wrapper {
+        display: none;
+        width: 350px;
+        height: 100px;
+        margin-left: 60vw;
+
+        h2 {
+            padding-top: 37px;
+            display: none;
+            margin:0px;
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: normal;
+            font-size: 1.3em;
+
+        }
+
+    }
+
+    
+
+    .answer {
+
+        display: none;
+
+        margin-top: -85px;
+
+        width: 33vw;
+        height: 60px;
+
+        border: solid 2px rgba(65,198,148,0.8);
+        border-radius: 10px;
+        box-shadow: 0px 6px 0px #00A969;
+        background: #20B87F;
+
+        h2 {
+
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: normal;
+
+        }
+
+    }
+
+    .small-button {
+        width: 18vw;
+        height: 60px;
+        
+        border: solid 2px rgba(255,184,83,0.9);
+        border-radius: 10px;
+        box-shadow: 0px 6px 0px #FA9200;
+        background: #FFA82D;
+
+        h2 {
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: normal;
+        }
+    }
+
+    .start {
+        @extend .small-button;
+
+        margin-top: 25px;
+
+    }
+
+    .next {
+        @extend .small-button;
+
+        display: none;
+
+        margin-top: 30px;
+        margin-left:18vw;
+
+    }
+
+    .yellow {
+        @extend .small-button;
+
+        display: none;
+
+        margin-top: 25px;
+
+    }
+
+    center {
+        margin-top: vh;
+    }
+
+}
+
+.check {
+
+    display: none;
+
+        float: left;
+        width: 200px;
+        margin-left: 25px;
+        margin-top: 0px;
+
+        height: 60px;
+
+        border-radius: 10px;
+
+        h2 {
+
+            color: white;
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: normal;
+
+        }
+        border: solid 2px rgba(65,198,148,0.8);
+        box-shadow: 0px 6px 0px #00A969;
+        background: #20B87F;
+}
