@@ -49,6 +49,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			} while ($return[0]["class_id"] == $class_id);
 
+			$class = filter($_POST["cname"]);
+			$hour = filter($_POST["chour"]);
+			$code = filter($_post["ccode"]);
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
+			$run->bindParam(':class', $class)
+			$run->execute();
+
+			$return = $run->fetchAll(PDO::FETCH_ASSOC);
+
+			if ($return[0]['class'] == $class){
+				#error class name already taken
+			} else{
+
 
 			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
 			$run->bindParam(":session", $session);
@@ -111,9 +126,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				//also kill it so the code down below dosent run and we dont create ghost classes
 			}
 
-			$class = filter($_POST["cname"]);
-			$hour = filter($_POST["chour"]);
-			$code = filter($_post["ccode"]);
 
 			$run = $dbh->prepare('INSERT INTO classes (class_id, class, hour, code) VALUES (:class_id, :class, :hour, :code)');
 			$run->bindParam(':class_id', $class_id);
@@ -121,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$run->bindParam(':hour', $hour);
 			$run->bindParam(':code', $code);
 			$run->execute();
-
+		}
 
 
 		} catch(PDOException $e){
