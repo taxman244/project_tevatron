@@ -49,10 +49,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			} while ($return[0]["class_id"] == $class_id);
 
+			$class = filter($_POST["cname"]);
+			$hour = filter($_POST["chour"]);
+			$code = filter($_post["ccode"]);
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
+			$run->bindParam(':class', $class)
+			$run->execute();
+
+			$return = $run->fetchAll(PDO::FETCH_ASSOC);
+
+			if ($return[0]['class'] == $class){
+				#error class name already taken
+			} else{
+
 
 			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
 			$run->bindParam(":session", $session);
-			$run->exectue();
+			$run->execute();
 
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
@@ -61,59 +76,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				$run = $dbh->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class2'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class3'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class4'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class5'] == NULL){
 
 				$run = $dbh->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class6'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class7'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class8'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} else{
 				//insert error for too many classes
 				//also kill it so the code down below dosent run and we dont create ghost classes
 			}
 
-			$class = filter($_POST["cname"]);
-			$hour = filter($_POST["chour"]);
-			$code = filter($_post["ccode"]);
 
 			$run = $dbh->prepare('INSERT INTO classes (class_id, class, hour, code) VALUES (:class_id, :class, :hour, :code)');
 			$run->bindParam(':class_id', $class_id);
@@ -121,7 +133,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$run->bindParam(':hour', $hour);
 			$run->bindParam(':code', $code);
 			$run->execute();
-
+		}
 
 
 		} catch(PDOException $e){
@@ -137,9 +149,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+			if ($return[0]['code'] != $join){
+				#error for incorect code
+			}	else {
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+			$class_id = $return [0]['class_id'];
+
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+
 			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
 			$run->bindParam(":session", $session);
-			$run->exectue();
+			$run->execute();
 
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
@@ -148,56 +181,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				$run = $dbh->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class2'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class3'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class4'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class5'] == NULL){
 
 				$run = $dbh->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class6'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class7'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} elseif ($return[0]['class8'] == NULL){
 				$run = $dbh->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
-				$run->exectue();
+				$run->execute();
 
 			} else{
 				//insert error for too many classes
 				//also kill it so the code down below dosent run and we dont create ghost classes
 			}
-
+}
 
 		} catch(PDOException $e){
 			//insert error here
@@ -315,7 +348,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					} elseif($user_type == 1 and $session == $session_check){
 					
 						echo '<h1 class="title">Join a Class</h1>
-						<input name="cjcode" id="cjode" type="text" class="single-input" placeholder="Class Code">
+						<input name="cjcode" id="cjcode" type="text" class="single-input" placeholder="Class Code">
 
 						<input type="submit" name="login" action="post" class="btn-primary" value="Join Class">';
 					} else{

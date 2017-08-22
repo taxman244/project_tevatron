@@ -128,15 +128,15 @@ try{
 		$run->bindParam(':class6', $assign_class_id);
 		$run->bindParam(':class7', $assign_class_id);
 		$run->bindParam(':class8', $assign_class_id);
-		$run->exectue();
+		$run->execute();
 
 		$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
-		$students = $return['user_id']; #might not work. We will see.
+		$students = $return; #might not work. We will see.
 
 		foreach ($students as $student) {
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('UPDATE assigned SET $byte_id . "_class" = :class, $byte_id . "_date" = :today, $byte_id . "_due" = :due, $byte_id . "_tries" = :tries WHERE user_id = :user_id');
+			$run = $dbh->prepare('UPDATE assigned SET $class."_class" = :class, $byte_id."_date" = :today, $byte_id."_due" = :due, $byte_id."_tries" = :tries WHERE user_id = :user_id');
 			$run->bindParam(':class', $assign_class_id);
 			$run->bindParam(':today', $date);
 			$run->bindParam(':due', $due);
