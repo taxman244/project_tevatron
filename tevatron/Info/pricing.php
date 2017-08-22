@@ -3,6 +3,7 @@
 	<head>
 		<link rel="stylesheet" id="index" type="text/css" href="../CSS/index.css">
 		<link rel="stylesheet" id="info" type="text/css" href="CSS/info.css">
+		<link rel="stylesheet" id="navfoot" type="text/css" href="../CSS/navfoot.css">
 		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script type="text/javascript">
@@ -10,12 +11,15 @@
 			  width = parseInt(width);
 			  if (width < 800) {
 			    $("#index").attr("href", "../CSS/index.css");
+			    $("#navfoot").attr("href", "../CSS/navfoot.css");
 			    $("#info").attr("href", "CSS/info.css");
 			  } else if (width < 1920) {
 			    $("#index").attr("href", "../CSS/index-2.css");
+			    $("#navfoot").attr("href", "../CSS/navfoot-2.css");
 			    $("#info").attr("href", "CSS/info-2.css");
 			  } else {
 			     $("#index").attr("href", "../CSS/index.css"); 
+			     $("#navfoot").attr("href", "../CSS/navfoot.css");
 			     $("#info").attr("href", "CSS/info.css");
 			  }
 			}

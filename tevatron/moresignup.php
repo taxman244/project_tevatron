@@ -95,6 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<head>
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
+		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/parallax.min.js"></script>
 		<script type="text/javascript">
@@ -104,12 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			  if (width < 800) {
 			    $("#index").attr("href", "CSS/index.css");
 			    $("#inputs").attr("href", "CSS/login.css");
+			    $("#navfoot").attr("href", "CSS/navfoot.css");
 			  } else if (width < 1920) {
 			    $("#index").attr("href", "CSS/index-2.css");
 			    $("#inputs").attr("href", "CSS/login-2.css");
+			    $("#navfoot").attr("href", "CSS/navfoot-2.css");
 			  } else {
 			     $("#index").attr("href", "CSS/index.css"); 
 			     $("#inputs").attr("href", "CSS/login.css");
+			     $("#navfoot").attr("href", "CSS/navfoot.css");
 			  }
 			}
 
@@ -119,7 +124,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			    adjustStyle($(this).width());
 			  });
 			});
-		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body style="background-image: url('img/signup.jpg'); background-size: cover;">

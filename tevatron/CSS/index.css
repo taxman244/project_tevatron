@@ -1,119 +1,15 @@
-/* line 13, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .html, body {
   padding: 0;
   margin: 0;
   overflow-x: hidden;
 }
 
-/* line 18, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar {
-  height: 70px;
-  width: 100vw;
-  position: fixed;
-  top: 0px;
-  background: white;
-  z-index: 2;
-  border-bottom: 2px solid #47759E;
-}
-
-/* line 27, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar h1 {
-  font-family: "Merriweather Sans";
-  color: #20B87F;
-  margin-top: 4px;
-  font-size: 45px;
-  text-align: center;
-}
-
-/* line 35, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul {
-  position: absolute;
-  text-align: center;
-  color: #FF6E2D;
-}
-
-/* line 39, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li ul.fallback {
-  display: none;
-}
-
-/* line 40, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li:hover ul.fallback {
-  display: block;
-}
-
-/* line 45, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul #teacherDrop {
-  margin-left: 15vw;
-  margin-top: -10px;
-}
-
-/* line 50, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul #studentDrop {
-  margin-left: 75vw;
-  margin-top: -100px;
-}
-
-/* line 55, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li {
-  float: left;
-  display: inline;
-  font-family: "Merriweather Sans";
-}
-
-/* line 61, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li:hover {
-  background: #E6E6E6;
-  border-radius: 5px;
-}
-
-/* line 66, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li a {
-  font-size: 23px;
-  display: block;
-  padding: 15px 25px;
-  color: #FF6E2D;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* line 77, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li ul {
-  position: absolute;
-  width: 150px;
-  background: #FFF;
-  padding: 0px;
-  border-radius: 5px;
-}
-
-/* line 85, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li ul li {
-  width: 150px;
-}
-
-/* line 89, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li ul li a {
-  display: block;
-  padding: 15px 10px;
-  color: #444;
-  font-size: 15px;
-  font-weight: normal;
-  font-family: 'Comfortaa';
-}
-
-/* line 90, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.navbar ul li ul li a:hover {
-  background: #F7F7F7;
-}
-
-/* line 103, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container {
   width: 100vw;
   height: 96vh;
   background: #47759E;
 }
 
-/* line 108, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container .error-box {
   position: absolute;
   top: 27vh;
@@ -125,18 +21,15 @@
   border-radius: 7px;
 }
 
-/* line 121, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container .error-box h4 {
   font-family: 'Comfortaa';
   color: white;
 }
 
-/* line 130, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container .top {
   padding-top: 17vh;
 }
 
-/* line 133, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container .top h1 {
   font-family: "Merriweather Sans";
   color: white;
@@ -144,7 +37,6 @@
   text-align: center;
 }
 
-/* line 142, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .container img {
   height: 55vh;
   margin-top: 10vh;
@@ -154,7 +46,6 @@
   border-top: 3px solid white;
 }
 
-/* line 152, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper {
   width: 100vw;
   height: 45vh;
@@ -162,7 +53,6 @@
   transform: translateZ(-1px);
 }
 
-/* line 158, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper .moreinfo {
   margin-top: -0.5vh;
   padding-top: 0.45vh;
@@ -172,7 +62,6 @@
   font-family: "Merriweather Sans";
 }
 
-/* line 167, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper div {
   float: left;
   height: 60%;
@@ -181,7 +70,6 @@
   margin-left: 2.5vw;
 }
 
-/* line 175, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper div h1 {
   text-align: left;
   color: #20B87F;
@@ -189,7 +77,6 @@
   font-family: "Merriweather Sans";
 }
 
-/* line 182, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper div p {
   width: 22vw;
   font-family: 'Comfortaa';
@@ -197,7 +84,6 @@
   margin-top: -15px;
 }
 
-/* line 191, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .info-wrapper img {
   width: auto;
   height: 60%;
@@ -205,88 +91,8 @@
   float: left;
 }
 
-/* line 200, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
 .parallax {
   width: 100vw;
   height: 50vh;
   background: transparent;
 }
-
-/* line 206, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer {
-  width: 100vw;
-  height: 200px;
-  background: #47759E;
-}
-
-/* line 211, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer #qoute {
-  color: white;
-  font-family: "Merriweather Sans";
-  float: left;
-  margin-left: 7.5vw;
-  font-size: 40px;
-}
-
-/* line 219, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer .txt {
-  padding: 6px;
-  width: 10vw;
-  border-radius: 7px;
-  margin-top: 90px;
-  margin-left: -21.5vw;
-  float: left;
-}
-
-/* line 228, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer .btn {
-  margin-top: 90px;
-  margin-left: -9.85vw;
-  float: left;
-  height: 32px;
-  width: 6vw;
-  min-width: 110px;
-  background: #20B87F;
-  color: white;
-  border: 0;
-  border-radius: 10px;
-  text-decoration: none;
-}
-
-/* line 243, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer .btn:hover {
-  background: #29A3CC;
-  border: 1px solid #307287;
-  border-radius: 10px;
-}
-
-/* line 253, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer div {
-  width: 150px;
-  margin-left: 8vw;
-  margin-top: 20px;
-  height: auto;
-  float: left;
-}
-
-/* line 260, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer div h1 {
-  color: #FFA82D;
-  font-family: "Merriweather Sans";
-  font-size: 18px;
-}
-
-/* line 266, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer div p {
-  padding: 1px;
-  margin: 0px;
-  margin-left: 0.5vw;
-  color: white;
-}
-
-/* line 272, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/index.scss */
-.footer div p:hover {
-  text-decoration: underline;
-}
-
-/*# sourceMappingURL=../CSS/index.map */

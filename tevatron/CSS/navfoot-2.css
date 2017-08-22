@@ -1,0 +1,154 @@
+.navbar {
+  height: 70px;
+  width: 100vw;
+  position: fixed;
+  top: 0px;
+  background: white;
+  z-index: 2;
+  border-bottom: 2px solid #47759E;
+}
+
+.navbar h1 {
+  font-family: "Merriweather Sans";
+  color: #20B87F;
+  margin-top: px;
+  font-size: 45px;
+  text-align: center;
+}
+
+.navbar ul {
+  position: absolute;
+  text-align: center;
+  color: #FF6E2D;
+}
+
+.navbar ul li ul.fallback {
+  display: none;
+}
+
+.navbar ul li:hover ul.fallback {
+  display: block;
+}
+
+.navbar ul #teacherDrop {
+  margin-left: 15vw;
+  margin-top: -10px;
+}
+
+.navbar ul #studentDrop {
+  margin-left: 75vw;
+  margin-top: -100px;
+}
+
+.navbar ul li {
+  float: left;
+  display: inline;
+  font-family: "Merriweather Sans";
+}
+
+.navbar ul li:hover {
+  background: #E6E6E6;
+  border-radius: 5px;
+}
+
+.navbar ul li a {
+  font-size: 23px;
+  display: block;
+  padding: 15px 25px;
+  color: #FF6E2D;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.navbar ul li ul {
+  position: absolute;
+  width: 150px;
+  background: #FFF;
+  padding: 0px;
+  border-radius: 5px;
+}
+
+.navbar ul li ul li {
+  width: 150px;
+}
+
+.navbar ul li ul li a {
+  display: block;
+  padding: 15px 10px;
+  color: #444;
+  font-size: 15px;
+  font-weight: normal;
+  font-family: 'Comfortaa';
+}
+
+.navbar ul li ul li a:hover {
+  background: #F7F7F7;
+}
+
+.footer {
+  width: 100vw;
+  height: 200px;
+  background: #47759E;
+}
+
+.footer #qoute {
+  color: white;
+  font-family: "Merriweather Sans";
+  float: left;
+  margin-left: 0vw;
+  font-size: 30px;
+}
+
+.footer .txt {
+  padding: 6px;
+  width: 10vw;
+  border-radius: 7px;
+  margin-top: 90px;
+  margin-left: -21.5vw;
+  float: left;
+}
+
+.footer .btn {
+  margin-top: 90px;
+  margin-left: -9.85vw;
+  float: left;
+  height: 32px;
+  width: 6vw;
+  min-width: 110px;
+  background: #20B87F;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  text-decoration: none;
+}
+
+.footer .btn:hover {
+  background: #29A3CC;
+  border: 1px solid #307287;
+  border-radius: 10px;
+}
+
+.footer div {
+  width: 150px;
+  margin-left: 4vw;
+  margin-top: 20px;
+  height: auto;
+  float: left;
+}
+
+.footer div h1 {
+  color: #FFA82D;
+  font-family: "Merriweather Sans";
+  font-size: 18px;
+}
+
+.footer div p {
+  padding: 1px;
+  margin: 0px;
+  margin-left: 0.5vw;
+  color: white;
+}
+
+.footer div p:hover {
+  text-decoration: underline;
+}

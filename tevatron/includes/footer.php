@@ -1,4 +1,40 @@
-<div class="footer">
+<?php
+
+function filter($string) {
+
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
+}
+	
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	
+
+	$user = "website_access";
+	$pass = "+Hacking1859";
+
+	
+
+	try{
+		$concern = filter($_POST["concern"]);
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $user, $pass);
+		$run = $dbh->prepare("INSERT INTO concerns (complaint, time) VALUES (:complaint, :time)");
+		$run->bindParam(':complaint', $concern);
+		$run->bindParam(':time', $time);
+
+		$time = date("h:i:sa");
+		$run->execute();
+	
+		$run = null;
+		$dbh = null;
+
+	} catch(PDOException $e) {
+		print "Error!: " . $e->getMessage() . "<br/>";
+    	die();
+	}
+}
+
+?>
+<div class="footer" style="<?php echo $style;?>">
 	<center>
 		<div>
 			<h1>Important Links</h1>

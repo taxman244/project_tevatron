@@ -1,4 +1,3 @@
-/* line 1, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/login-2.scss */
 .title {
   color: white;
   font-family: s, sans-serif;
@@ -6,7 +5,6 @@
   padding-bottom: 0px;
 }
 
-/* line 9, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/login-2.scss */
 .foot {
   color: white;
   font-size: 15.5px;
@@ -14,7 +12,6 @@
   font-family: Comfortaa, sans-serif;
 }
 
-/* line 16, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/login-2.scss */
 .select {
   min-width: 125px;
   padding: 6px;
@@ -23,12 +20,9 @@
   float: right;
 }
 
-/* line 24, /Users/rogerjanusiak/Desktop/Project Tevatron/SASS/login-2.scss */
 .smoltitle {
   color: white;
   font-family: Comfortaa, sans-serif;
   margin-top: 0px;
   text-align: left;
 }
-
-/*# sourceMappingURL=../CSS/login-2.map */

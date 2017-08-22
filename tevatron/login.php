@@ -12,27 +12,28 @@ $sql_pass = "+Hacking1859";
 $email_code = $_SERVER['QUERY_STRING'];
 
 if ($email_code == ""){
-	} elseif ($email_code == "error") {
+
+} elseif ($email_code == "error") {
+	$errorHad = true;
+	$error = "You are not logged in!";
+} elseif ($email_code != "error"){
+
+	$errorHad = true;
+	$error = "Email has been varified.";
+
+	try{
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('UPDATE users SET verified = 1 WHERE email_code = :email_code');
+		$run->bindParam(':email_code', $email_code);
+		$run->execute();
+		$dbh = null;
+
+	} catch(PDOException $e) {
 		$errorHad = true;
-		$error = "You are not logged in!";
-	} elseif ($email_code != "error"){
-
-		$errorHad = true;
-		$error = "Email has been varified.";
-
-		try{
-
-			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('UPDATE users SET verified = 1 WHERE email_code = :email_code');
-			$run->bindParam(':email_code', $email_code);
-			$run->execute();
-			$dbh = null;
-
-		} catch(PDOException $e) {
-			$errorHad = true;
-			$error = "Seems we could not reach our servers! Please contact an admin.";
-		}
+		$error = "Seems we could not reach our servers! Please contact an admin.";
 	}
+}
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -158,6 +159,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 	<head>
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
+		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/parallax.min.js"></script>
 		<script type="text/javascript">
@@ -167,12 +170,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			  if (width < 800) {
 			    $("#index").attr("href", "CSS/index.css");
 			    $("#inputs").attr("href", "CSS/login.css");
+			    $("#navfoot").attr("href", "CSS/navfoot.css");
 			  } else if (width < 1920) {
 			    $("#index").attr("href", "CSS/index-2.css");
 			    $("#inputs").attr("href", "CSS/login-2.css");
+			    $("#navfoot").attr("href", "CSS/navfoot-2.css");
 			  } else {
 			     $("#index").attr("href", "CSS/index.css"); 
 			     $("#inputs").attr("href", "CSS/login.css");
+			     $("#navfoot").attr("href", "CSS/navfoot.css");
 			  }
 			}
 
@@ -182,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			    adjustStyle($(this).width());
 			  });
 			});
-		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body style="background-image: url('img/background.jpg'); background-size: cover;">
