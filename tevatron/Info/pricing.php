@@ -29,31 +29,9 @@
 		</script>
 	</head>
 	<body>
-		<div class="navbar">
-			<ul>
-			    <li style="margin-left: 15vw;margin-top: -10px;">
-			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">Pricing</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-			<h1 style="margin-top: 5px;">Project Tevatron</h1>
-			<ul>
-			    <li style="margin-left: 75vw;margin-top: -100px;">
-			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Join a Class</a></li>
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact Us</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-		</div>
+		<?php
+			include '../includes/navbar.php';
+		?>
 		<div class="container" style="background: white;">
 			<center>
 				<h1 class="page-title">Let's talk numbers.</h1>
@@ -82,42 +60,8 @@
 				<input type="submit" class="button" value="Find Out More">
 			</center>
 		</div>
-		<div class="footer">
-			<div>
-				<h1>Important Links</h1>
-				<p>About Us</p>
-				<p>Pricing</p>
-				<p>Student Portal</p>
-				<p>Teacher Portal</p>
-				<p>Account Managment</p>
-			</div>
-			<div>
-				<h1>Subjects</h1>
-				<p>Physics</p>
-				<p>Chemistry</p>
-				<p>Ecology</p>
-				<p>More Soon!</p>
-			</div>
-			<h1 id="qoute">What are you waiting for?</h1>
-			<form name="message" method="post" style="">
-				<input id="concern" type="text" name="concern" class="txt" placeholder="What's your concern?">
-				<input type="submit" action="post" name="submit-concern" class="btn" value="Submit Concern">
-			</form>
-			<div>
-				<h1>Contact Us</h1>
-				<p>Staff Bio's</p>
-				<p>Contact Staff</p>
-				<p>District Request</p>
-				<p>School Registration</p>
-				<p>Customer Services</p>
-			</div>
-			<div>
-				<h1>Value Points</h1>
-				<p>Content</p>
-				<p>Tracking</p>
-				<p>Gamification</p>
-				<p>Affordable</p>
-			</div>
-		</div>
+		<?php
+			include '../includes/footer.php';
+		?>
 	</body>
 </html>

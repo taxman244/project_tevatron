@@ -123,31 +123,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body style="background-image: url('img/signup.jpg'); background-size: cover;">
-		<div class="navbar">
-			<ul>
-			    <li style="margin-left: 15vw;margin-top: -10px;">
-			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">Pricing</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-			<h1 style="margin-top: 5px;">Project Tevatron</h1>
-			<ul>
-			    <li style="margin-left: 75vw;margin-top: -100px;">
-			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Join a Class</a></li>
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact Us</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-		</div>
+		<?php
+			include 'includes/navbar.php';
+		?>
 		<div class="container" style="background: transparent;">
 			<center>
 				<?php 
