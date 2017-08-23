@@ -3,6 +3,7 @@
 function filter($string) {
 
   return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
 }
 
 $sql_user = "website_access";
@@ -124,21 +125,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 	<head>
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
+		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/parallax.min.js"></script>
 		<script type="text/javascript">
 
-			function adjustStyle(width) {
-			  width = parseInt(width);
-			  if (width < 800) {
+			if (width < 800) {
 			    $("#index").attr("href", "CSS/index.css");
 			    $("#inputs").attr("href", "CSS/login.css");
+			    $("#navfoot").attr("href", "CSS/navfoot.css");
 			  } else if (width < 1920) {
 			    $("#index").attr("href", "CSS/index-2.css");
 			    $("#inputs").attr("href", "CSS/login-2.css");
+			    $("#navfoot").attr("href", "CSS/navfoot-2.css");
 			  } else {
 			     $("#index").attr("href", "CSS/index.css"); 
 			     $("#inputs").attr("href", "CSS/login.css");
+			     $("#navfoot").attr("href", "CSS/navfoot.css");
 			  }
 			}
 
@@ -148,35 +153,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 			    adjustStyle($(this).width());
 			  });
 			});
-		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body style="background-image: url('img/signup.jpg'); background-size: cover;">
-		<div class="navbar">
-			<ul>
-			    <li style="margin-left: 15vw;margin-top: -10px;">
-			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">Pricing</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-			<h1 style="margin-top: 5px;">Project Tevatron</h1>
-			<ul>
-			    <li style="margin-left: 75vw;margin-top: -100px;">
-			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Join a Class</a></li>
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact Us</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-		</div>
+		<?php
+			include 'includes/navbar.php';
+		?>
 		<div class="container" style="background: transparent;">
 			<center>
 				<?php 

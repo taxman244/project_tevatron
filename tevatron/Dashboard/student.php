@@ -1,7 +1,9 @@
 <?php
+
 function filter($string) {
 
   return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
 }
 
 $sql_user = "website_access";
@@ -175,9 +177,10 @@ try{
 	</script>
 </head>
 <body style="background: #F5F5F5;">
-	<nav>
-		<h2 style="float: left;margin-top: 10px;">Student Dashboard</h2>
-	</nav>
+	<?php
+		$title = 'Student Dashboard';
+		include '../includes/usernavbar.php';
+	?>
 	<div>hello</div>
 	<div class="sidebar">
 		<div class="sidebar-icon" onclick="toggleMenu()"><img src="../img/menu.png" style="margin-left: 1px;margin-top: 3px;width: 50px;height: 50px;"></div>

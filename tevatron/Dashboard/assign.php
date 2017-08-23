@@ -250,9 +250,10 @@ try{
 	</script>
 </head>
 <body>
-	<nav>
-		<h2 style="float: left;margin-top: 10px;">Assign Bytes</h2>
-	</nav>
+	<?php
+		$title = 'Assign Byte';
+		include '../includes/usernavbar.php';
+	?>
 	<div class="column" id="subjectsColumn">
 		<h1>Subject</h1>
 	</div>

@@ -67,19 +67,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//$mail->isHTML(true);                                  // Set email format to HTML
 
 			$mail->Subject = 'Verify Email -- Project Tevatron';
-			$mail->Body    = 'Hello '.$first_name.'! Here is your link to verify your email! http://tevatron.prioritycoding.net/login.php?'.$email_code.' Simply follow the link and you will be all set to use Project Tevatron!';
+			$mail->Body    = 'Follow this link to verify your account: http://tevatron.prioritycoding.net/login.php?'.$email_code.'';
 
 
 			if(!$mail->send()) {
 			    echo 'Message could not be sent.';
 			    echo 'Mailer Error: ' . $mail->ErrorInfo;
 			} else {
-			    echo 'Message has been sent';
+			    header("Location: /Info/sent.php");
 			}
 
 
 
-			header("Location: https://www.youtube.com/watch?v=aT8ix3ZNlLM");
+			
 			die();
 
 		} catch(PDOException $e) {
@@ -95,6 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	<head>
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
+		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/parallax.min.js"></script>
 		<script type="text/javascript">
@@ -104,12 +106,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			  if (width < 800) {
 			    $("#index").attr("href", "CSS/index.css");
 			    $("#inputs").attr("href", "CSS/login.css");
+			    $("#navfoot").attr("href", "CSS/navfoot.css");
 			  } else if (width < 1920) {
 			    $("#index").attr("href", "CSS/index-2.css");
 			    $("#inputs").attr("href", "CSS/login-2.css");
+			    $("#navfoot").attr("href", "CSS/navfoot-2.css");
 			  } else {
 			     $("#index").attr("href", "CSS/index.css"); 
 			     $("#inputs").attr("href", "CSS/login.css");
+			     $("#navfoot").attr("href", "CSS/navfoot.css");
 			  }
 			}
 
@@ -119,35 +124,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			    adjustStyle($(this).width());
 			  });
 			});
-		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	</head>
 	<body style="background-image: url('img/signup.jpg'); background-size: cover;">
-		<div class="navbar">
-			<ul>
-			    <li style="margin-left: 15vw;margin-top: -10px;">
-			      <a href="#">Teachers<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">Pricing</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-			<h1 style="margin-top: 5px;">Project Tevatron</h1>
-			<ul>
-			    <li style="margin-left: 75vw;margin-top: -100px;">
-			      <a href="#">Students<span style="font-size: 18px;">&#9660;</span></a>
-			      <ul class="fallback">
-			        <li><a href="#">Join a Class</a></li>
-			        <li><a href="#">Sign Up</a></li>
-			        <li><a href="#">More Info</a></li>
-			        <li><a href="#">Contact Us</a></li>
-			      </ul>
-			    </li>
-		  	</ul>
-		</div>
+		<?php
+			include 'includes/navbar.php';
+		?>
 		<div class="container" style="background: transparent;">
 			<center>
 				<?php 

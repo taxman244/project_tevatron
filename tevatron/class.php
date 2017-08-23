@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 			$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
-			$run->bindParam(':class', $class)
+			$run->bindParam(':class', $class);
 			$run->execute();
 
 			$return = $run->fetchAll(PDO::FETCH_ASSOC);
@@ -273,7 +273,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
+		<link rel="stylesheet" id="index" type="text/css" href="CSS/navfoot.css">
 		<link rel="stylesheet" id="login" type="text/css" href="CSS/login.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/inputs.css">
 		<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
@@ -282,15 +282,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			function adjustStyle(width) {
 			  width = parseInt(width);
 			  if (width < 800) {
-			    $("#index").attr("href", "CSS/index.css");
+			    $("#index").attr("href", "CSS/navfoot.css");
 			    $("#inputs").attr("href", "CSS/inputs.css");
 			    $("#login").attr("href", "CSS/login.css");
 			  } else if (width < 1920) {
-			    $("#index").attr("href", "CSS/index-2.css");
+			    $("#index").attr("href", "CSS/navfoot-2.css");
 			    $("#inputs").attr("href", "CSS/inputs-2.css");
-			    $("#login").attr("href", "CSS/login.css");
+			    $("#login").attr("href", "CSS/login-2.css");
 			  } else {
-			     $("#index").attr("href", "CSS/index.css"); 
+			     $("#index").attr("href", "CSS/navfoot.css"); 
 			     $("#inputs").attr("href", "CSS/inputs.css");
 			     $("#login").attr("href", "CSS/login.css");
 			  }
