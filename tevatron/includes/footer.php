@@ -1,10 +1,6 @@
 <?php
 
-function filter($string) {
 
-  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-
-}
 	
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	
@@ -12,7 +8,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$user = "website_access";
 	$pass = "+Hacking1859";
 
-	
+	function filter($string) {
+
+	  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
+	}
 
 	try{
 		$concern = filter($_POST["concern"]);
@@ -32,6 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     	die();
 	}
 }
+
+
 
 ?>
 <div class="footer" style="<?php echo $style;?>">

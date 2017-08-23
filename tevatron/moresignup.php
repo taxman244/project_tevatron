@@ -67,19 +67,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//$mail->isHTML(true);                                  // Set email format to HTML
 
 			$mail->Subject = 'Verify Email -- Project Tevatron';
-			$mail->Body    = 'Hello '.$first_name.'! Here is your link to verify your email! http://tevatron.prioritycoding.net/login.php?'.$email_code.' Simply follow the link and you will be all set to use Project Tevatron!';
+			$mail->Body    = 'Follow this link to verify your account: http://tevatron.prioritycoding.net/login.php?'.$email_code.'';
 
 
 			if(!$mail->send()) {
 			    echo 'Message could not be sent.';
 			    echo 'Mailer Error: ' . $mail->ErrorInfo;
 			} else {
-			    echo 'Message has been sent';
+			    header("Location: /Info/sent.php");
 			}
 
 
 
-			header("Location: https://www.youtube.com/watch?v=aT8ix3ZNlLM");
+			
 			die();
 
 		} catch(PDOException $e) {

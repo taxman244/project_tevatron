@@ -34,11 +34,11 @@
 			});
 		</script>
 	</head>
-	<body style="background-image: url('../img/waterfall.jpg'); background-size: cover;">
+	<body style="background-image: url('../img/waterfall.jpg'); background-size: cover;overflow-x: hidden;">
 		<?php
 			include '../includes/navbar.php'
 		?>
-		<div class="container" style="background: transparent;">
+		<div class="container" style="background: transparent;height: 94vh;">
 			<center>
 			<?php 
 				if($errorHad == true) {
