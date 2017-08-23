@@ -6,7 +6,7 @@ function filter($string) {
 
 }
 
-$sql_user = "website_access";
+$sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
 
@@ -104,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 				setcookie("username", $new_username);
 
-				header("Location: http://tevatron.prioritycoding.net/moresignup.php");
+				header("Location: /moresignup.php");
 				die();
 		}
 

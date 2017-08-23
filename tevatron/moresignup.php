@@ -6,6 +6,9 @@ function filter($string) {
 
 }
 
+$sql_user = "tevatron_access";
+$sql_pass = "+Hacking1859";
+
 $username = $_COOKIE["username"];
 	
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,9 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$errorHad = true;
 		$error = "Please fill out all forms!";
 	} else {
-
-		$sql_user = "pc_admin";
-		$sql_pass = "+Newton11";
 
 		try{
 
@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//$mail->isHTML(true);                                  // Set email format to HTML
 
 			$mail->Subject = 'Verify Email -- Project Tevatron';
-			$mail->Body    = 'Follow this link to verify your account: http://tevatron.prioritycoding.net/login.php?'.$email_code.'';
+			$mail->Body    = 'Follow this link to verify your account: http://tevatron.net/login.php?'.$email_code.'';
 
 
 			if(!$mail->send()) {

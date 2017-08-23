@@ -6,7 +6,7 @@ function filter($string) {
 
 }
 
-$sql_user = "website_access";
+$sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
 $email_code = $_SERVER['QUERY_STRING'];
@@ -126,13 +126,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					setcookie('logins', $logins);
 
 					if ($logins < 2){
-						header("Location: http://tevatron.prioritycoding.net/class.php");
+						header("Location: /class.php");
 					die();
 					} elseif ($user_type = 1) {
-						header("Location: http://tevatron.prioritycoding.net/Dashboard/student.php");
+						header("Location: /Dashboard/student.php");
 					die();
 					} elseif ($user_type = 2) {
-						header("Location: http://tevatron.prioritycoding.net/Dashboard/teacher.php");
+						header("Location: /Dashboard/teacher.php");
 					die();
 					}
 
