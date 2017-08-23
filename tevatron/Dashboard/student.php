@@ -6,7 +6,7 @@ function filter($string) {
 
 }
 
-$sql_user = "website_access";
+$sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 $user = filter($_COOKIE["user"]);
 $session = filter($_COOKIE["session"]);
@@ -32,7 +32,7 @@ try{
 		unset($_COOKIE['user_type']);
 		unset($_COOKIE['logins']);
 
-		header("Location: http://tevatron.prioritycoding.net/login.php?error");
+		header("Location: /login.php?error");
 		die();
 	}
 
@@ -251,7 +251,7 @@ try{
 									for ($i = 1; $i <= $count; $i+5){
 
 										echo '"<div style="width: 100px;float: left;">
-                            					<a href="http://tevatron.prioritycoding.net/Byte/bytes.php?". $clean[$x] .
+                            					<a href="http://tevatron.net/Byte/bytes.php?". $clean[$x] .
                                 					"<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
                             				</div>"';
 

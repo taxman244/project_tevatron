@@ -6,7 +6,7 @@ function filter($string) {
 
 }
 
-$sql_user = "website_access";
+$sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 $user = filter($_COOKIE["user"]);
 $session = filter($_COOKIE["session"]);

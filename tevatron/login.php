@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$error = "Please fill out all forms.";
 	}
 
-	$sql_user = "website_access";
+	$sql_user = "tevatron_access";
 	$sql_pass = "+Hacking1859";
 
 

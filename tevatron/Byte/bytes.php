@@ -5,7 +5,7 @@ function filter($string) {
 
 }
 
-$sql_user = "website_access";
+$sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
 $byte_id = filter($_SERVER['QUERY_STRING']);
