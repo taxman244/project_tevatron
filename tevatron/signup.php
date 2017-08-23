@@ -96,6 +96,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 				$run = null;
 				$dbh = null;
 
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('INSERT INTO assigned (user_id) VALUES (:user_id)');
+				$run->bindParam(':user_id', $user_id);
+				$run->execute();
 
 				setcookie("username", $new_username);
 

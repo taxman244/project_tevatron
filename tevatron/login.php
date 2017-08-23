@@ -111,6 +111,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					setcookie('session', $session);
 					setcookie('user_type', $return[0]["user_type"]);
 
+					$user_type = $return[0]["user_type"];
+
 					$logins = $return[0]["logins"] + 1;
 					$last_log = date("y/m/d h:i:sa");
 
@@ -125,10 +127,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					if ($logins < 2){
 						header("Location: http://tevatron.prioritycoding.net/class.php");
 					die();
-					} else {
+					} elseif ($user_type = 1) {
 						header("Location: http://tevatron.prioritycoding.net/Dashboard/student.php");
 					die();
-					
+					} elseif ($user_type = 2) {
+						header("Location: http://tevatron.prioritycoding.net/Dashboard/teacher.php");
+					die();
 					}
 
 
