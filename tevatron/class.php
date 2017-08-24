@@ -332,7 +332,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			});
 		</script>
 	</head>
-	<body>
+	<body style="background-image: url('img/mushroom.jpg'); background-size: cover;">
 		
 	<?php include 'includes/navbar.php';
 	?>
