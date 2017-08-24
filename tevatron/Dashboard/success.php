@@ -49,7 +49,7 @@ function filter($string) {
 			});
 		</script>
 	</head>
-	<body style="background-image: url('../img/signup.jpg'); background-size: cover;">
+	<body style="background-image: url('../img/mushroom.jpg'); background-size: cover;">
 		<?php
 			include '../includes/navbar.php';
 		?>
@@ -59,7 +59,7 @@ function filter($string) {
 				echo '
 					<center>
 						<h1 class="page-title" style="color: white;margin-top: 225px;">You have succesfully created the class:</h1>
-						<h2 style="color: #FFA82D;"><?php echo filter($_COOKIE["class"]); ?></h2>
+						<h2 style="color: #FFA82D;">' . filter($_COOKIE["class"]); . '</h2>
 						<a href="/Dashbaord/teacher.php">
 							<h2 style="color: white;width: 400px;">Click here to continue to your dashboard.</h2>
 						</a>

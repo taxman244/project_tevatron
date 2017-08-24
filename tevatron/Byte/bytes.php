@@ -8,7 +8,7 @@ function filter($string) {
 $sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
-$byte_id = filter($_SERVER['QUERY_STRING']);
+$byte_id = $_SERVER['QUERY_STRING'];
 try{
   $dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
   $run = $dbh->prepare('SELECT * FROM bytes WHERE byte_id = :byte_id');
@@ -17,21 +17,23 @@ try{
 
   $return = $run->fetchALL(PDO::FETCH_ASSOC);
 
-  $questions = array();
+
+  $quesions = array();
   $answers = array();
   $why = array();
+  $type = array();
 
   foreach($return as $row){
-  array_push($questions, $row['question']);
+  array_push($quesions, $row['question']);
   array_push($answers, $row['answer_cor'], $row['answer_1'], $row['answer_2'], $row['answer_3']);
   array_push($why, $row['why_1'], $row['why_2'], $row['why_3'], $row['why_4']);
+  array_push($type, $row['question_type']);
 
   }
 }catch(PDOException $e){
   $errorHad = true;
   $error = "Seems we could not reach our servers! Please contact an admin.";
 }
-
 
 ?>
 <!DOCTYPE html>
@@ -85,6 +87,13 @@ try{
         echo json_encode($why);
         ?>
       ;
+
+      var questionType = <?php
+        echo json_encode($type, JSON_NUMERIC_CHECK);
+        ?>;
+
+      var amount = 10-1;
+
 
       var answerConfiguration = [];
       var questionConfiguration = [];
