@@ -25,7 +25,7 @@ try{
 	$return = 0;
 	$run = 0;
 	
-	if ($session !== $session_check){
+	if ($session != $session_check){
 
 		unset($_COOKIE['user']);
 		unset($_COOKIE['session']);
