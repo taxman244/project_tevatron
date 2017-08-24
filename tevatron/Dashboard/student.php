@@ -139,7 +139,7 @@ try{
 <html>
 <head>
 	<title>Student Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="dashboard.css">
+	<link rel="stylesheet" type="text/css" href="CSS/dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../login.css">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>

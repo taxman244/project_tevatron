@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+		<title>Contact Us | Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Have a complaint or concern with us that you would like to adress, post it here.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="navfoot" type="text/css" href="../CSS/navfoot.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="../CSS/inputs.css">
 		<link rel="stylesheet" id="login" type="text/css" href="../CSS/login.css">

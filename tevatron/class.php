@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			$class = filter($_POST["cname"]);
 			$hour = filter($_POST["chour"]);
-			$code = filter($_post["ccode"]);
+			$code = filter($_POST["ccode"]);
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 			$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
@@ -61,7 +61,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$return = $run->fetchAll(PDO::FETCH_ASSOC);
 
 			if ($return[0]['class'] == $class){
-				#error class name already taken
+				$errorHad = true;
+				$error = "That class name is already taken.";
 			} else{
 
 
@@ -72,56 +73,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
 
-			if($return[0]['class1'] == NULL) {
+			if($return[0]['class1'] == "") {
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class2'] == NULL){
+			} elseif ($return[0]['class2'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class3'] == NULL){
+			} elseif ($return[0]['class3'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class4'] == NULL){
+			} elseif ($return[0]['class4'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class5'] == NULL){
+			} elseif ($return[0]['class5'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class6'] == NULL){
+			} elseif ($return[0]['class6'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class7'] == NULL){
+			} elseif ($return[0]['class7'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
 				$run->bindParam(':session', $session);
 				$run->execute();
 
-			} elseif ($return[0]['class8'] == NULL){
+			} elseif ($return[0]['class8'] == ""){
 				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 				$run = $dbh->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
 				$run->bindParam(':class_id', $class_id);
@@ -129,22 +130,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				$run->execute();
 
 			} else{
-				//insert error for too many classes
-				//also kill it so the code down below dosent run and we dont create ghost classes
+				$errorHad = true;
+				$error = "You have already reached your class limit. Please delete a class.";
 			}
 
-			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('INSERT INTO classes (class_id, class, hour, code) VALUES (:class_id, :class, :hour, :code)');
-			$run->bindParam(':class_id', $class_id);
-			$run->bindParam(':class', $class);
-			$run->bindParam(':hour', $hour);
-			$run->bindParam(':code', $code);
-			$run->execute();
+			if($errorHad == false) {
+				$time = time()+3600;
+				setcookie('class', $class, $time, '/Dashboard/');
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('INSERT INTO classes (class_id, class, hour, code) VALUES (:class_id, :class, :hour, :code)');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':class', $class);
+				$run->bindParam(':hour', $hour);
+				$run->bindParam(':code', $code);
+				$run->execute();
+				header("Location: /Dashboard/success.php");
+				die();
+			}
 		}
+
+		
 
 
 		} catch(PDOException $e){
-			//insert error here
+			$errorHad = true;
+			$error = "Something went wrong with our server. Please contact a site administrator.";
 		}
 
 
@@ -163,7 +173,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
 			if ($return[0]['code'] != $join){
-				#error for incorect code
+				$errorHad = true;
+				$error = "That is not a valid class code.";
 			}	else {
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
@@ -174,6 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
 			$class_id = $return [0]['class_id'];
 
+			
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 
@@ -241,25 +253,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				$run->execute();
 
 			} else{
-				//insert error for too many classes
-				//also kill it so the code down below dosent run and we dont create ghost classes
+				$errorHad = true;
+				$error = "You have already reached your class limit. Please drop a class.";
+				
 			}
 
-			$class_count = $return[0]['count'] + 1;
+			if($error == false){
+				$time = time()+3600;
+				setcookie('class', $return[0]['class'], $time, '/Dashboard/');
+				$class_count = $return[0]['count'] + 1;
 
-			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('UPDATE classes SET count = :count WHERE code = :code');
-			$run->bindParam(':count', $class_count);
-			$run->bindParam(':code', $join);
-			$run->execute();
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('UPDATE classes SET count = :count WHERE code = :code');
+				$run->bindParam(':count', $class_count);
+				$run->bindParam(':code', $join);
+				$run->execute();
+				
+				header("Location: /Dashboard/success.php");
+				die();
+			}
 
 
-
+			
 
 }
 
 		} catch(PDOException $e){
-			//insert error here
+			$errorHad = true;
+			$error = "Seems we could not reach our servers! Please contact an admin.";
 		}
 
 	} elseif($uer_type == 3){
@@ -273,6 +294,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 	<head>
+
+		<title>Class |Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Teachers can create a class or students can join a class once logged in.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit, Class, Create, Join">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/navfoot.css">
 		<link rel="stylesheet" id="login" type="text/css" href="CSS/login.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/inputs.css">
@@ -312,6 +340,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		<div class="container">
 			<center>
 				<div style="width: 25vw;padding-top: 32vh;max-width: 500px;min-width: 250px;">
+					<?php 
+						if($errorHad == true) {
+							echo '<div class="error-box">';
+								echo '<h4>' . $error . '</h4>';
+							echo '</div>';
+						} 
+					?>
 					<form name="message" method="post" style="">
 						<?php
 

@@ -1,3 +1,13 @@
+<?php
+
+function filter($string) {
+
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -44,11 +54,27 @@
 			include '../includes/navbar.php';
 		?>
 		<div class="container" style="background: transparent;">
-			<center>
-				<h1 class="page-title" style="color: white;margin-top: 225px;">A verification email has been sent.</h1>
-				<h2>Why verify your email?</h2>
-				<h2 style="color: white;width: 400px;">We want to make sure that you can retrieve your lost password.</h2r>
-			</center>
+			<?php
+			if($_COOKIE["user_type"] == 2){ 
+				echo '
+					<center>
+						<h1 class="page-title" style="color: white;margin-top: 225px;">You have succesfully created the class:</h1>
+						<h2 style="color: #FFA82D;"><?php echo filter($_COOKIE["class"]); ?></h2>
+						<a href="/Dashbaord/teacher.php">
+							<h2 style="color: white;width: 400px;">Click here to continue to your dashboard.</h2>
+						</a>
+					</center>';
+				}else if ($_COOKIE["user_type"] == 1) {
+					echo '
+					<center>
+						<h1 class="page-title" style="color: white;margin-top: 225px;">You have succesfully joined the class:</h1>
+						<h2 style="color: #FFA82D;"><?php echo filter($_COOKIE["class"]); ?></h2>
+						<a href="/Dashbaord/student.php">
+							<h2 style="color: white;width: 400px;">Click here to continue to your dashboard.</h2>
+						</a>
+					</center>';
+				}
+				?>
 		</div>
 		<?php
 			include '../includes/footer.php';

@@ -123,6 +123,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 	<head>
+
+	<title>Sign Up | Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Sign up here and get started learnign or teaching through our modern classroom service.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
 		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">

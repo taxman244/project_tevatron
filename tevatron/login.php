@@ -6,7 +6,7 @@ function filter($string) {
 
 }
 
-$sql_user = "tevatron_access";
+$sql_user = "website_access";
 $sql_pass = "+Hacking1859";
 
 $email_code = $_SERVER['QUERY_STRING'];
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		$error = "Please fill out all forms.";
 	}
 
-	$sql_user = "tevatron_access";
+	$sql_user = "website_access";
 	$sql_pass = "+Hacking1859";
 
 
@@ -108,9 +108,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 					$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
-					setcookie('user', $username);
-					setcookie('session', $session);
-					setcookie('user_type', $return[0]["user_type"]);
+					$time = time()+3600;
+
+					setcookie('user', $username, $time, '/');
+					setcookie('session', $session, $time, '/');
+					setcookie('user_type', $return[0]["user_type"], $time, '/');
+
+					setcookie('user', $username, $time, '/Dashboard/');
+					setcookie('session', $session, $time, '/Dashboard/');
+					setcookie('user_type', $return[0]["user_type"], $time, '/Dashboard/');
 
 					$user_type = $return[0]["user_type"];
 
@@ -121,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					$run->bindParam(':logins', $logins);
 					$run->bindParam(':last_log', $last_log);
 					$run->bindParam(':username', $username);
-					$run->execute();
+					//$run->execute();
 
 					setcookie('logins', $logins);
 
@@ -161,6 +167,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 	<head>
+
+		<title>Login | Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Students and Teachers can login to their user accounts and access their dashboard.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit,Login,Dashboard">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
 		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">

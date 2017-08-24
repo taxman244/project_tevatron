@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
+	<title>Pricing | Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Interested in our server? Here you can find the prices and look for discounts if you are eligable.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="index" type="text/css" href="../CSS/index.css">
 		<link rel="stylesheet" id="info" type="text/css" href="CSS/info.css">
 		<link rel="stylesheet" id="navfoot" type="text/css" href="../CSS/navfoot.css">

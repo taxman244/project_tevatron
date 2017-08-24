@@ -93,6 +93,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 	<head>
+
+		<title>Additional Sign Up | Project Tevatron</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="This is the second page of the sign up process. Please ensure that you have been through the first one.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit, Sign up, Additional">
+		<meta name="author" content="Priority Coding">
+
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/login.css">
 		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">

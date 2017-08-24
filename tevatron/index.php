@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<title>Project Tevatron | Home</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="Modern learning for a modern classroom, through exicting methods for you students.">
+		<meta name="keywords" content="Tevatron,Project Tevatron,Modern Learning, Byte, Bit">
+		<meta name="author" content="Priority Coding">
+		
 		<link rel="stylesheet" id="index" type="text/css" href="CSS/index.css">
 		<link rel="stylesheet" id="inputs" type="text/css" href="CSS/inputs.css">
 		<link rel="stylesheet" id="navfoot" type="text/css" href="CSS/navfoot.css">
