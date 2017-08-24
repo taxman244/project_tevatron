@@ -40,11 +40,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 			unset($_COOKIE["username"]);
 
+
+
+			if ($user_type = 1) {
+
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('SELECT * FROM users WHERE username = :username');
+				$run->bindParam(':username', $username);
+				$run->execute();
+
+				$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+				$user_id = $return[0]['uesr_id'];
+
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('INSERT INTO scores (user_id) VALUES (:user_id)');
+				$run->bindParam(':user_id', $user_id);
+				$run->execute();
+
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('INSERT INTO assigned (user_id) VALUES (:user_id)');
+				$run->bindParam(':user_id', $user_id);
+				$run->execute();
+			}
+
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 			$run = $dbh->prepare('SELECT * FROM users WHERE username = :username');
 			$run->bindParam(':username', $username);
 			$run->execute();
 			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+
+
 
 			$email_send = $return[0]["email"];
 			$email_code = $return[0]["email_code"];
