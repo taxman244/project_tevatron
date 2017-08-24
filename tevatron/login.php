@@ -118,6 +118,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 					setcookie('session', $session, $time, '/Dashboard/');
 					setcookie('user_type', $return[0]["user_type"], $time, '/Dashboard/');
 
+					setcookie('user', $username, $time, '/Byte/');
+					setcookie('session', $session, $time, '/Byte/');
+					setcookie('user_type', $return[0]["user_type"], $time, '/Byte/');
+
 					$user_type = $return[0]["user_type"];
 
 					$logins = $return[0]["logins"] + 1;
