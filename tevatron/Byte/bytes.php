@@ -324,6 +324,8 @@ try{
 				$('#question').css('margin-top','30vh');
 				$('#question').text('You scored a ' + percentage + '%!');
 				$('.yellow').css('display', 'block');
+				$('#score').val(percentage);
+				$('#message').submit();
 			}
 
 			function nextQuestion() {
@@ -413,6 +415,9 @@ try{
 				<div class="yellow" onclick=""><h2>View Analysis</h2></div>
 			</center>
 		</div>
+		<form name="message" method="post" id="message" style="display: none;">
+			<input type="text" name="score" id="score">
+		</form>
 		<script src="../js/dropdown.js"></script>
 	</body>
 </html>
