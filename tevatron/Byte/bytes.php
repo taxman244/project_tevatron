@@ -8,6 +8,10 @@ function filter($string) {
 $sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
+$user = filter($_COOKIE["user"]);
+$session = filter($_COOKIE["session"]);
+$user_type = filter($_COOKIE["user_type"]);
+
 $byte_id = $_SERVER['QUERY_STRING'];
 try{
   $dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
@@ -33,6 +37,32 @@ try{
 }catch(PDOException $e){
   $errorHad = true;
   $error = "Seems we could not reach our servers! Please contact an admin.";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+	$score = filter($_POST["score"]);
+
+	try{
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
+		$run->bindParam(':session', $session);
+		$run->execute();
+
+		$return = $run->fetchALL(PDO::FETCH_ASSOC);
+		$user_id = $return[0]['user_id'];
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('UPDATE scores SET :byte = :score WHERE user_id = :user_id');
+		$run->bindParam(':byte',$byte_id . '_score');
+		$run->bindParam(':score', $score);
+		$run->bindParam(':user_id', $user_id);
+		$run->execute;
+
+
+	}catch(PDOException $e){
+  	 $errorHad = true;
+ 	 $error = "Seems we could not reach our servers! Please contact an admin.";
 }
 
 ?>
