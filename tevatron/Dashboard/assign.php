@@ -111,7 +111,7 @@ try{
 		$due = filter($_POST["dateDue"]);
 		$tries = filter($_POST["tries"]);
 		$class = filter($_POST["class"]);
-		$byte_id = 4;
+		$byte_id = $_POST["byteId"];
 
 		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 		$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
@@ -155,24 +155,9 @@ try{
 
 
 		foreach ($filter_students as $student) {
-			echo $headcount;
-			echo $count;
-			echo $i;
-			echo $byte_byte_id;
-			echo $byte_class;
-			echo $byte_date;
-			echo $byte_due;
-			echo $byte_tries;
-			echo $byte_id;
-			echo $assign_class_id;
-			echo $date;
-			echo $due;
-			echo $tries;
-			echo $student;
-			
 
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('UPDATE assigned SET' . $byte_byte_id . '=' . $byte_id . 'WHERE user_id =' . $student);
+			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_byte_id . ' = ' . $byte_id . ' WHERE user_id = ' . $student);
 			$run->execute();
 		}
 
@@ -263,14 +248,14 @@ try{
 			$('#preview-content').css('display', 'block');
 			$('#previewTitle').text(bytes[byteId]);
 			$('#previewDesc').text(previews[byteId+1]);
-			$('#preview-content').append('<center id="center"><input class="btn-primary" type="submit" value="Preview Byte"><input onClick="addByte(' + previews[byteId] + ')" class="btn-primary" type="submit" value="Add Byte" id="previewAdd"></center>');
+			$('#preview-content').append('<center id="center"><input class="btn-primary" type="submit" value="Preview Byte"><input onClick="addByte(' + byteId + ')" class="btn-primary" type="submit" value="Add Byte" id="previewAdd"></center>');
 		}
 
 		function addByte(byteId) {
 			$('.darken').css('display','block');
 			$('.addWindow').css('display','block');
 			$('#byteName').text(bytes[byteId]);
-			$('#byteId').val(previews[byteId]);
+			$('#byteId2').val(previews[byteId]);
 		}
 
 		function byteAssigned() {
@@ -322,7 +307,7 @@ try{
 					}
 					?>
 				</select>
-				<input name="byteId" id="byteId" type="text" class="single-input, addByteInput" placeholder="4" style="display: none;">
+				<input name="byteId" id="byteId2" type="text" style="display: none;">
 				<input type="submit" name="login" action='post' class="btn-primary" value="Assign Byte" style="width: 70%;margin-top: 30px;" onclick="byteAssigned()">
 			</center>
 		</form>
