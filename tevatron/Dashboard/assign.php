@@ -107,8 +107,8 @@ try{
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-		$date = date("m/d/y");
-		$due = filter($_POST["dateDue"]);
+		$date = date("y/m/d h:i:sa");
+		$due = $_POST["dateDue"];
 		$tries = filter($_POST["tries"]);
 		$class = filter($_POST["class"]);
 		$byte_id = $_POST["byteId"];
@@ -159,6 +159,23 @@ try{
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_byte_id . ' = ' . $byte_id . ' WHERE user_id = ' . $student);
 			$run->execute();
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_class . ' = ' . $class . ' WHERE user_id = ' . $student);
+			$run->execute();
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_date . ' = ' . $date . ' WHERE user_id = ' . $student);
+			$run->execute();
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_due . ' = ' . $due . ' WHERE user_id = ' . $student);
+			$run->execute();
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('UPDATE assigned SET ' . $byte_tries . ' = ' . $tries . ' WHERE user_id = ' . $student);
+			$run->execute();
+
 		}
 
 
