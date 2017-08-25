@@ -103,7 +103,7 @@ try{
 
 	}
 
-	array_filter($classes);
+	$clean_classes = array_filter($classes);
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -111,7 +111,7 @@ try{
 		$due = filter($_POST["dateDue"]);
 		$tries = filter($_POST["tries"]);
 		$class = filter($_POST["class"]);
-		$byte_id = filter($_POST["byteId"]);
+		$byte_id = 4;
 
 		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 		$run = $dbh->prepare('SELECT * FROM classes WHERE class = :class');
@@ -122,7 +122,7 @@ try{
 		$assign_class_id = $return[0]['class_id'];
 
 		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-		$run = $dbh->prepare('SELECT user_id FROM users WHERE class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8');
+		$run = $dbh->prepare('SELECT * FROM users WHERE class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8');
 		$run->bindParam(':class1', $assign_class_id);
 		$run->bindParam(':class2', $assign_class_id);
 		$run->bindParam(':class3', $assign_class_id);
@@ -135,16 +135,44 @@ try{
 
 		$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
-		$students = $return; #might not work. We will see.
+		$count = count($return);
 
-		foreach ($students as $student) {
+		$students = array();
+
+		for ($i = 0; $i <= $count; $i++){
+			array_push($students, $return[$i]['user_id']);
+		}
+
+		$headcount = count($students);
+
+		$filter_students = array_filter($students);
+
+		$byte_byte_id = $byte_id . '_byte_id';
+		$byte_class = $byte_id . '_class';
+		$byte_date = $byte_id . '_date';
+		$byte_due = $byte_id . '_due';
+		$byte_tries = $byte_id . '_tries';
+
+
+		foreach ($filter_students as $student) {
+			echo $headcount;
+			echo $count;
+			echo $i;
+			echo $byte_byte_id;
+			echo $byte_class;
+			echo $byte_date;
+			echo $byte_due;
+			echo $byte_tries;
+			echo $byte_id;
+			echo $assign_class_id;
+			echo $date;
+			echo $due;
+			echo $tries;
+			echo $student;
+			
+
 			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('UPDATE assigned SET $class."_class" = :class, $byte_id."_date" = :today, $byte_id."_due" = :due, $byte_id."_tries" = :tries WHERE user_id = :user_id');
-			$run->bindParam(':class', $assign_class_id);
-			$run->bindParam(':today', $date);
-			$run->bindParam(':due', $due);
-			$run->bindParam(':tries', $tries);
-			$run->bindParam(':user_id', $student);
+			$run = $dbh->prepare('UPDATE assigned SET' . $byte_byte_id . '=' . $byte_id . 'WHERE user_id =' . $student);
 			$run->execute();
 		}
 
@@ -289,7 +317,7 @@ try{
 				<h3>Class</h3>
 				<select name= "class" id="class" class="addByteInput">
 					<?php
-					foreach ($classes as $class){
+					foreach ($clean_classes as $class){
 						echo "<option> $class </option>";
 					}
 					?>
