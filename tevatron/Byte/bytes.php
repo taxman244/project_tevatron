@@ -9,7 +9,6 @@ $sql_user = "tevatron_access";
 $sql_pass = "+Hacking1859";
 
 $user = filter($_COOKIE["user"]);
-$session = filter($_COOKIE["session"]);
 $user_type = filter($_COOKIE["user_type"]);
 
 $byte_id = $_SERVER['QUERY_STRING'];
@@ -40,29 +39,34 @@ try{
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
-	$score = filter($_POST["score"]);
+	$score = $_POST["score"];
+	$byte_id2 = $_POST["id"];
 
 	try{
 
+
+		$sql_user = "tevatron_access";
+		$sql_pass = "+Hacking1859";
+
 		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
 		$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
-		$run->bindParam(':session', $session);
+		$run->bindParam(':session', $_COOKIE["session"]);
 		$run->execute();
 
 		$return = $run->fetchALL(PDO::FETCH_ASSOC);
 		$user_id = $return[0]['user_id'];
+		$byte_id3 = $byte_id2 . '_score';
 
 		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-		$run = $dbh->prepare('UPDATE scores SET :byte = :score WHERE user_id = :user_id');
-		$run->bindParam(':byte',$byte_id . '_score');
-		$run->bindParam(':score', $score);
-		$run->bindParam(':user_id', $user_id);
-		$run->execute;
+		$run = $dbh->prepare('UPDATE scores SET ' . $byte_id3 . ' = ' . $score . ' WHERE user_id = ' . $user_id);
+		
+		$run->execute();
 
 
 	}catch(PDOException $e){
   	 $errorHad = true;
  	 $error = "Seems we could not reach our servers! Please contact an admin.";
+ 	}
 }
 
 ?>
@@ -124,6 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
       var amount = 10-1;
 
+      var byteId = <?php echo $byte_id; ?>;
 
       var answerConfiguration = [];
       var questionConfiguration = [];
@@ -355,6 +360,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 				$('#question').text('You scored a ' + percentage + '%!');
 				$('.yellow').css('display', 'block');
 				$('#score').val(percentage);
+				$('#id').val(byteId);
 				$('#message').submit();
 			}
 
@@ -447,6 +453,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 		<form name="message" method="post" id="message" style="display: none;">
 			<input type="text" name="score" id="score">
+			<input type="text" name="id" id="id">
 		</form>
 		<script src="../js/dropdown.js"></script>
 	</body>
