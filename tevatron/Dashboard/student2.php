@@ -1,3 +1,141 @@
+<?php
+
+function filter($string) {
+
+  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
+
+}
+
+$sql_user = "tevatron_access";
+$sql_pass = "+Hacking1859";
+
+$user = filter($_COOKIE["user"]);
+$session = filter($_COOKIE["session"]);
+$user_type = filter($_COOKIE["user_type"]);
+
+try{
+
+	$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+	$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
+	$run->bindParam(':session',$session);
+	$run->execute();
+
+	$return = $run->fetchALL(PDO::FETCH_ASSOC);
+	$user_id = $return[0]['user_id'];
+
+
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+		$join = filter($_POST["cjcode"]);
+
+		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+		$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+		$run->bindParam(':code', $join);
+		$run->execute();
+
+		$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+		if ($join != $return[0]['code']) {
+			$errorHad = true;
+			$error = "That is not a valid class code.";
+		} else {
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
+			$run->bindParam(':code', $join);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+			$class_id = $return[0]['class_id'];
+
+			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
+			$run->bindParam(':session', $session);
+			$run->execute();
+
+			$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+			if ($return[0]['class1'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class2'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class3'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class4'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class5'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class6'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class7'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} elseif ($return[0]['class8'] == NULL){
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dby->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
+				$run->bindParam(':class_id', $class_id);
+				$run->bindParam(':session', $session);
+				$run->execute();
+			} else {
+				$errorHad = true;
+				$error = "You have already reached your class limit. Please drop a class.";
+			}
+
+			if($error == false){
+				$time = time()+3600;
+				setcookie('class', $return[0]['class'], $time, '/Dashboard/');
+				$class_count = $return[0]['count'] + 1;
+
+				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+				$run = $dbh->prepare('UPDATE classes SET count = :count WHERE code = :code');
+				$run->bindParam(':count', $class_count);
+				$run->bindParam(':code', $join);
+				$run->execute();
+				
+				header("Location: /Dashboard/success.php");
+				die();
+			}
+		}
+
+	}
+
+
+
+
+} catch(PDOException $e){
+	$errorHad = true;
+	$error = "Seems we could not reach our servers! Please contact an admin.";
+} 
+
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,6 +203,52 @@
 					<center>
 						<div class="head"><p>Upcoming Bytes</p></div>
 						<div class="body" style="height: 225px;overflow-y: scroll;">
+							<?php
+								try{
+									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+									$run = $dbh->prepare('SELECT * FROM assigned WHERE user_id = :user_id');
+									$run->bindParam(':user_id', $user_id);
+									$run->execute();
+
+									$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+
+									$assignments = array_filter($return[0]);
+									$count = count($assignments);
+
+									for ($i = 1; $i <= $count; $i + 5){
+										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+										$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
+										$run->bindParam(':byte_id', $assignments[$i]);
+										$run->execute();
+
+										$return = $run->fetchALL(PDO::FETCH_ASSOC);
+										$title = $return[0]['name'];
+										echo '"<div style="width: 275px;float: left;margin-left: 10px;">
+												<p>" . $title . "</p>
+											  </div>"';
+									}
+
+									for ($i = 4; $i <= $count; $i + 5){
+										echo '"<div style="width: 75px;float: left;">
+											   		<p>" . $assignments[$i] . "</p>
+											   </div>"';
+									}
+
+									for ($i = 1; $i <= $count; $i + 5){
+										echo '"<div style="width: 100px;float: left;">
+												   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
+													   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
+											   </div>"';
+									}
+
+
+								}catch(PDOException $e){
+									$errorHad = true;
+									$error = "Seems we could not reach our servers! Please contact an admin.";
+								} 
+
+							?>
 							<div style="width: 275px;float: left;margin-left: 10px;">
 								<p>Scalars and Vectors</p>
 							</div>
@@ -137,6 +321,74 @@
 						<div class="head" style="background: #FF6E2D"><p>Current Classes</p></div>
 						<div class="body" style="height: 225px;">
 						<div>
+							<?php
+								try{
+									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+									$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
+									$run->bindParam(':session', $session);
+									$run->execute();
+
+									$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+									$classes = array();
+									array_push($classes, $return[0]['class1']);
+									array_push($classes, $return[0]['class2']);
+									array_push($classes, $return[0]['class3']);
+									array_push($classes, $return[0]['class4']);
+									array_push($classes, $return[0]['class5']);
+									array_push($classes, $return[0]['class6']);
+									array_push($classes, $return[0]['class7']);
+									array_push($classes, $return[0]['class8']);
+
+									$classes_clean = array_filter($classes);
+
+									foreach ($classes_clean as $user_class){
+										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+										$run = $dbh->prepare('SELECT * FROM users WHERE user_type = :user_type AND (class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8)');
+										$run->bindParam(':user_type', 2);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->bindParam(':class', $user_class);
+										$run->execute();
+
+										$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+										$last_name = $return[0]['last_name'];
+
+
+										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+										$run = $dbh->prepare('SELECT * FROM classes WHERE class_id = :class_id');
+										$run->bindParam(':class_id', $user_class);
+										$run->execute();
+
+										$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+										echo '"<div style="width: 100px;float: left;margin-left: 10px;">
+													<p>" . $return[0][class] . "</p>
+												</div>
+												<div style="width: 145px;float: left;">
+													<p>" . $last_name . "</p>
+												</div>
+												<div style="width: 95px;float: left;">
+													<p>Hour " . $return[0][hour] . "</p>
+												</div>
+												<div style="width: 45px;float: left;">
+													<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
+												</div>"';
+									}
+
+
+								}catch(PDOException $e){
+									$errorHad = true;
+									$error = "Seems we could not reach our servers! Please contact an admin.";
+								} 
+
+							?>
 							<div style="width: 100px;float: left;margin-left: 10px;">
 								<p>Physics</p>
 							</div>
