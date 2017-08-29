@@ -65,56 +65,6 @@
 					<center>
 						<div class="head"><p>Upcoming Bytes</p></div>
 						<div class="body" style="height: 350px;overflow-y: scroll;">
-<<<<<<< HEAD
-						<?php
-								try{
-									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-									$run = $dbh->prepare('SELECT * FROM assigned WHERE user_id = :user_id');
-									$run->bindParam(':user_id', $user_id);
-									$run->execute();
-
-									$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-
-									$assignments = array_filter($return[0]);
-									$count = count($assignments);
-
-									if ($count >= 6){
-
-										for ($i = 1; $i <= $count; $i + 5){
-											$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-											$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
-											$run->bindParam(':byte_id', $assignments[$i]);
-											$run->execute();
-
-											$return = $run->fetchALL(PDO::FETCH_ASSOC);
-											$title = $return[0]['name'];
-											echo '"<div style="width: 275px;float: left;margin-left: 10px;">
-													<p>" . $title . "</p>
-												  </div>"';
-										}
-
-										for ($i = 4; $i <= $count; $i + 5){
-											echo '"<div style="width: 75px;float: left;">
-												   		<p>" . $assignments[$i] . "</p>
-												   </div>"';
-										}
-
-										for ($i = 1; $i <= $count; $i + 5){
-											echo '"<div style="width: 100px;float: left;">
-													   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
-														   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
-												   </div>"';
-										}
-
-									}
-								}catch(PDOException $e){
-									$errorHad = true;
-									$error = "Seems we could not reach our servers! Please contact an admin.";
-								} 
-
-							?>	
-=======
 							<div style="width: 450px;float: left;margin-left: 25px;">
 								<p>Scalars and Vectors</p>
 							</div>
@@ -134,7 +84,6 @@
 						<div style="width: 100px;float: left;">
 							<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p>
 						</div>
->>>>>>> 31612e81b9b93e5692b1ef3601f243901ca5559a
 					</center>
 				</div>
 				<div class="widget" style="width: 375px;margin-left: 750px;">
@@ -201,79 +150,6 @@
 			<div id="tab-classes" style="display: none;">
 				<div class="widget" style="width: 725px;">
 					<center>
-<<<<<<< HEAD
-						<?php
-								try{
-									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-									$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
-									$run->bindParam(':session', $session);
-									$run->execute();
-
-									$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-									$classes = array();
-									array_push($classes, $return[0]['class1']);
-									array_push($classes, $return[0]['class2']);
-									array_push($classes, $return[0]['class3']);
-									array_push($classes, $return[0]['class4']);
-									array_push($classes, $return[0]['class5']);
-									array_push($classes, $return[0]['class6']);
-									array_push($classes, $return[0]['class7']);
-									array_push($classes, $return[0]['class8']);
-
-									$classes_clean = array_filter($classes);
-
-									
-
-									foreach ($classes_clean as $user_class){
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM users WHERE user_type = :user_type AND (class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8)');
-										$run->bindParam(':user_type', 2);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->execute();
-
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-										$last_name = $return[0]['last_name'];
-
-
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM classes WHERE class_id = :class_id');
-										$run->bindParam(':class_id', $user_class);
-										$run->execute();
-
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-										echo '"<div style="width: 100px;float: left;margin-left: 10px;">
-													<p>" . $return[0][class] . "</p>
-												</div>
-												<div style="width: 145px;float: left;">
-													<p>" . $last_name . "</p>
-												</div>
-												<div style="width: 95px;float: left;">
-													<p>Hour " . $return[0][hour] . "</p>
-												</div>
-												<div style="width: 45px;float: left;">
-													<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
-												</div>"';
-									}
-
-
-								}catch(PDOException $e){
-									$errorHad = true;
-									$error = "Seems we could not reach our servers! Please contact an admin.";
-								} 
-
-							?>
-=======
->>>>>>> 31612e81b9b93e5692b1ef3601f243901ca5559a
 						<div class="head" style="background: #FF6E2D"><p>Current Classes</p></div>
 						<div class="body" style="height: 300px;">
 						<div>
