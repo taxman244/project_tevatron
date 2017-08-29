@@ -1,146 +1,8 @@
-<?php
-
-function filter($string) {
-
-  return htmlspecialchars($string, ENT_QUOTES, 'UTF-8');
-
-}
-
-$sql_user = "tevatron_access";
-$sql_pass = "+Hacking1859";
-
-$user = filter($_COOKIE["user"]);
-$session = filter($_COOKIE["session"]);
-$user_type = filter($_COOKIE["user_type"]);
-
-try{
-
-	$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-	$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
-	$run->bindParam(':session',$session);
-	$run->execute();
-
-	$return = $run->fetchALL(PDO::FETCH_ASSOC);
-	$user_id = $return[0]['user_id'];
-
-
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-		$join = filter($_POST["cjcode"]);
-
-		$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-		$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
-		$run->bindParam(':code', $join);
-		$run->execute();
-
-		$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-		if ($join != $return[0]['code']) {
-			$errorHad = true;
-			$error = "That is not a valid class code.";
-		} else {
-			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('SELECT * FROM classes WHERE code = :code');
-			$run->bindParam(':code', $join);
-			$run->execute();
-
-			$return = $run->fetchALL(PDO::FETCH_ASSOC);
-			$class_id = $return[0]['class_id'];
-
-			$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-			$run = $dbh->prepare('SELECT * FROM users WHERE session = :session');
-			$run->bindParam(':session', $session);
-			$run->execute();
-
-			$return = $run->fetchALL(PDO::FETCH_ASSOC);
-
-			if ($return[0]['class1'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class1 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class2'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class2 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class3'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class3 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class4'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class4 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class5'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class5 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class6'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class6 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class7'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class7 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} elseif ($return[0]['class8'] == NULL){
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dby->prepare('UPDATE users SET class8 = :class_id WHERE session = :session');
-				$run->bindParam(':class_id', $class_id);
-				$run->bindParam(':session', $session);
-				$run->execute();
-			} else {
-				$errorHad = true;
-				$error = "You have already reached your class limit. Please drop a class.";
-			}
-
-			if($error == false){
-				$time = time()+3600;
-				setcookie('class', $return[0]['class'], $time, '/Dashboard/');
-				$class_count = $return[0]['count'] + 1;
-
-				$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-				$run = $dbh->prepare('UPDATE classes SET count = :count WHERE code = :code');
-				$run->bindParam(':count', $class_count);
-				$run->bindParam(':code', $join);
-				$run->execute();
-				
-				header("Location: /Dashboard/success.php");
-				die();
-			}
-		}
-
-	}
-
-
-
-
-} catch(PDOException $e){
-	$errorHad = true;
-	$error = "Seems we could not reach our servers! Please contact an admin.";
-} 
-
-
-
-?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Student Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="CSS/dashboard.css">
+	<link rel="stylesheet" type="text/css" href="dashboard.css">
 	<link rel="stylesheet" type="text/css" href="../login.css">
 	<link href="https://fonts.googleapis.com/css?family=Comfortaa|Merriweather+Sans" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -178,12 +40,11 @@ try{
 	</script>
 </head>
 <body style="background: #F5F5F5;">
-	<?php
-		$title = 'Student Dashboard';
-		include '../includes/usernavbar.php';
-	?>
+	<nav>
+		<h2 style="float: left;margin-top: 10px;">Student Dashboard</h2>
+	</nav>
 	<div>hello</div>
-	<div class="sidebar">
+	<div class="sidebar" style="display: none;">
 		<div class="sidebar-icon" onclick="toggleMenu()"><img src="../img/menu.png" style="margin-left: 1px;margin-top: 3px;width: 50px;height: 50px;"></div>
 		<div class="sidebar-label" onclick="toggleMenu()"><p>Toggle Menu</p></div>
 		<div class="sidebar-icon" onclick="tabBytes()"><img src="../img/assignment.png" style="margin-left: 7px;margin-top: 7px;"></div>
@@ -199,11 +60,12 @@ try{
 	</div>
 	<center>
 		<div class="dash">
-			<div id="tab-bytes" style="display: none;">
+			<div id="tab-bytes">
 				<div class="widget" style="width: 725px;">
 					<center>
 						<div class="head"><p>Upcoming Bytes</p></div>
 						<div class="body" style="height: 350px;overflow-y: scroll;">
+<<<<<<< HEAD
 						<?php
 								try{
 									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
@@ -252,20 +114,40 @@ try{
 								} 
 
 							?>	
+=======
+							<div style="width: 450px;float: left;margin-left: 25px;">
+								<p>Scalars and Vectors</p>
+							</div>
+							<div style="width: 100px;float: left;">
+								<p>7/22/2017</p>
+							</div>
+							<div style="width: 100px;float: left;">
+							<a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=">
+								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
+							</div>
+						<div style="width: 450px;float: left;margin-left: 25px;">
+							<p>Newton's Laws</p>
+						</div>
+						<div style="width: 100px;float: left;">
+							<p>7/28/2017</p>
+						</div>
+						<div style="width: 100px;float: left;">
+							<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p>
+						</div>
+>>>>>>> 31612e81b9b93e5692b1ef3601f243901ca5559a
 					</center>
 				</div>
 				<div class="widget" style="width: 375px;margin-left: 750px;">
 					<center>
-						<div class="head" style="background: #FF6E2D;"><p>Grade Progress</p></div>
-						<div class="body" style="height: 400px;">
-							<h2 style="margin-top: 25px;">Sitewide Grade:</h2>
-							<h1 style="margin-top: 20px;">A</h1>
-							<h2>Physics:</h2>
-							<h1>C</h1>
-							<h2>Chemistry:</h2>
-							<h1>B</h1>
-							<h2>Algebra:</h2>
-							<h1>B</h1>
+						<div class="head" style="background: #47759E;"><p>Join Another Class</p></div>
+						<div class="body" style="height: 275px;">
+						<p></p>
+							<p style="font-size: 22px;margin-top: 5px;">Enter Class Code:</p>
+							<form name="message" method="post" style="margin-top: 30px;">
+								<input name="cjcode" id="cjode" type="text" class="single-input" placeholder="Class Code">
+
+								<input type="submit" name="login" action='post' class="btn-primary" value="Join Class">
+							</form>
 						</div>
 					</center>
 				</div>
@@ -284,9 +166,6 @@ try{
 					<center>
 						<div class="head" style="background: #47759E;"><p>Finished Bytes</p></div>
 						<div class="body" style="height: 330px;overflow-y: scroll;">
-
-
-
 							<div style="width: 450px;float: left;margin-left: 25px;">
 								<p>Scalars and Vectors</p>
 							</div>
@@ -303,15 +182,15 @@ try{
 								<p>7/28/2017</p>
 							</div>
 							<div style="width: 100px;float: left;">
-								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p>
+								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">100%</p>
 							</div>
 						</div>
 					</center>
 				</div>
-				<div class="widget" style="width: 375px;margin-left: 750px;margin-top: 475px">
+				<div class="widget" style="width: 375px;margin-left: 750px;margin-top: 350px">
 					<center>
 						<div class="head" style="background: #20B87F;"><p>Your Bits</p></div>
-						<div class="body" style="height: 275px;">
+						<div class="body" style="height: 400px;">
 							<h2 style="margin-top: 25px;">Total Bits:</h2>
 							<h1 style="margin-top: 20px;">96</h1>
 							<h2>Earned This Month:</h2>
@@ -322,6 +201,7 @@ try{
 			<div id="tab-classes" style="display: none;">
 				<div class="widget" style="width: 725px;">
 					<center>
+<<<<<<< HEAD
 						<?php
 								try{
 									$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
@@ -392,6 +272,8 @@ try{
 								} 
 
 							?>
+=======
+>>>>>>> 31612e81b9b93e5692b1ef3601f243901ca5559a
 						<div class="head" style="background: #FF6E2D"><p>Current Classes</p></div>
 						<div class="body" style="height: 300px;">
 						<div>
@@ -413,20 +295,6 @@ try{
 						</div>
 						</div>
 						
-					</center>
-				</div>
-				<div class="widget" style="width: 425px;margin-left: 750px;">
-					<center>
-						<div class="head" style="background: #47759E;"><p>Join Another Class</p></div>
-						<div class="body" style="height: 225px;">
-						<p></p>
-							<p style="font-size: 22px;margin-top: 5px;">Enter Class Code:</p>
-							<form name="message" method="post" style="margin-top: 30px;">
-								<input name="cjcode" id="cjcode" type="text" class="single-input" placeholder="Class Code">
-
-								<input type="submit" name="login" action='post' class="btn-primary" value="Join Class">
-							</form>
-						</div>
 					</center>
 				</div>
 				<div class="widget" style="width: 300px;margin-left: 1200px;">
@@ -481,7 +349,7 @@ try{
 						</div>
 				</div>
 			</div>
-			<div id="tab-badges">
+			<div id="tab-badges" style="display: none;">
 				<div class="widget" style="width: 800px;margin-left: 100px;">
 					<center>
 						<div class="head" style="background: #FF6E2D;"><p>Close Badge Progress</p></div>
