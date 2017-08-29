@@ -216,32 +216,34 @@ try{
 									$assignments = array_filter($return[0]);
 									$count = count($assignments);
 
-									for ($i = 1; $i <= $count; $i + 5){
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
-										$run->bindParam(':byte_id', $assignments[$i]);
-										$run->execute();
+									if ($count >= 6){
 
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
-										$title = $return[0]['name'];
-										echo '"<div style="width: 275px;float: left;margin-left: 10px;">
-												<p>" . $title . "</p>
-											  </div>"';
+										for ($i = 1; $i <= $count; $i + 5){
+											$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+											$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
+											$run->bindParam(':byte_id', $assignments[$i]);
+											$run->execute();
+
+											$return = $run->fetchALL(PDO::FETCH_ASSOC);
+											$title = $return[0]['name'];
+											echo '"<div style="width: 275px;float: left;margin-left: 10px;">
+													<p>" . $title . "</p>
+												  </div>"';
+										}
+
+										for ($i = 4; $i <= $count; $i + 5){
+											echo '"<div style="width: 75px;float: left;">
+												   		<p>" . $assignments[$i] . "</p>
+												   </div>"';
+										}
+
+										for ($i = 1; $i <= $count; $i + 5){
+											echo '"<div style="width: 100px;float: left;">
+													   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
+														   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
+												   </div>"';
+										}
 									}
-
-									for ($i = 4; $i <= $count; $i + 5){
-										echo '"<div style="width: 75px;float: left;">
-											   		<p>" . $assignments[$i] . "</p>
-											   </div>"';
-									}
-
-									for ($i = 1; $i <= $count; $i + 5){
-										echo '"<div style="width: 100px;float: left;">
-												   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
-													   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
-											   </div>"';
-									}
-
 
 								}catch(PDOException $e){
 									$errorHad = true;
@@ -249,16 +251,7 @@ try{
 								} 
 
 							?>
-							<div style="width: 275px;float: left;margin-left: 10px;">
-								<p>Scalars and Vectors</p>
-							</div>
-							<div style="width: 75px;float: left;">
-								<p>7/22/2017</p>
-							</div>
-							<div style="width: 100px;float: left;">
-							<a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=">
-								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
-							</div>
+							
 					</center>
 				</div>
 				<div class="widget" style="width: 300px;margin-left: 525px;">
@@ -341,45 +334,49 @@ try{
 									array_push($classes, $return[0]['class8']);
 
 									$classes_clean = array_filter($classes);
+									$clean_count = count($classes_clean);
 
-									foreach ($classes_clean as $user_class){
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM users WHERE user_type = :user_type AND (class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8)');
-										$run->bindParam(':user_type', 2);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->bindParam(':class', $user_class);
-										$run->execute();
+									if($clean_count > 0){
 
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
+										foreach ($classes_clean as $user_class){
+											$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+											$run = $dbh->prepare('SELECT * FROM users WHERE user_type = :user_type AND (class1 = :class1 OR class2 = :class2 OR class3 = :class3 OR class4 = :class4 OR class5 = :class5 OR class6 = :class6 OR class7 = :class7 OR class8 = :class8)');
+											$run->bindParam(':user_type', 2);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->bindParam(':class', $user_class);
+											$run->execute();
 
-										$last_name = $return[0]['last_name'];
+											$return = $run->fetchALL(PDO::FETCH_ASSOC);
+
+											$last_name = $return[0]['last_name'];
 
 
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM classes WHERE class_id = :class_id');
-										$run->bindParam(':class_id', $user_class);
-										$run->execute();
+											$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+											$run = $dbh->prepare('SELECT * FROM classes WHERE class_id = :class_id');
+											$run->bindParam(':class_id', $user_class);
+											$run->execute();
 
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
+											$return = $run->fetchALL(PDO::FETCH_ASSOC);
 
-										echo '"<div style="width: 100px;float: left;margin-left: 10px;">
-													<p>" . $return[0][class] . "</p>
-												</div>
-												<div style="width: 145px;float: left;">
-													<p>" . $last_name . "</p>
-												</div>
-												<div style="width: 95px;float: left;">
-													<p>Hour " . $return[0][hour] . "</p>
-												</div>
-												<div style="width: 45px;float: left;">
-													<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
-												</div>"';
+											echo '"<div style="width: 100px;float: left;margin-left: 10px;">
+														<p>" . $return[0][class] . "</p>
+													</div>
+													<div style="width: 145px;float: left;">
+														<p>" . $last_name . "</p>
+													</div>
+													<div style="width: 95px;float: left;">
+														<p>Hour " . $return[0][hour] . "</p>
+													</div>
+													<div style="width: 45px;float: left;">
+														<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
+													</div>"';
+										}
 									}
 
 
@@ -389,22 +386,7 @@ try{
 								} 
 
 							?>
-							<div style="width: 100px;float: left;margin-left: 10px;">
-								<p>Physics</p>
-							</div>
-							<div style="width: 145px;float: left;">
-								<p>Mr. Venne</p>
-							</div>
-							<div style="width: 95px;float: left;">
-								<p>4th Hour</p>
-							</div>
-							<div style="width: 95px;float: left;">
-								<p>2016/17</p>
-							</div>
-							<div style="width: 45px;float: left;">
-								<p style="text-align: right;font-weight: bold;color: #0B5AA2;">Drop</p>
-							</div>
-						</div>
+							
 						</div>
 						
 					</center>

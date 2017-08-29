@@ -217,33 +217,35 @@ try{
 									$assignments = array_filter($return[0]);
 									$count = count($assignments);
 
-									for ($i = 1; $i <= $count; $i + 5){
-										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
-										$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
-										$run->bindParam(':byte_id', $assignments[$i]);
-										$run->execute();
+									if ($count >= 6){
 
-										$return = $run->fetchALL(PDO::FETCH_ASSOC);
-										$title = $return[0]['name'];
-										echo '"<div style="width: 275px;float: left;margin-left: 10px;">
-												<p>" . $title . "</p>
-											  </div>"';
+										for ($i = 1; $i <= $count; $i + 5){
+											$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
+											$run = $dbh->prepare('SELECT * FROM bytes_data WHERE byte_id = :byte_id');
+											$run->bindParam(':byte_id', $assignments[$i]);
+											$run->execute();
+
+											$return = $run->fetchALL(PDO::FETCH_ASSOC);
+											$title = $return[0]['name'];
+											echo '"<div style="width: 275px;float: left;margin-left: 10px;">
+													<p>" . $title . "</p>
+												  </div>"';
+										}
+
+										for ($i = 4; $i <= $count; $i + 5){
+											echo '"<div style="width: 75px;float: left;">
+												   		<p>" . $assignments[$i] . "</p>
+												   </div>"';
+										}
+
+										for ($i = 1; $i <= $count; $i + 5){
+											echo '"<div style="width: 100px;float: left;">
+													   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
+														   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
+												   </div>"';
+										}
+
 									}
-
-									for ($i = 4; $i <= $count; $i + 5){
-										echo '"<div style="width: 75px;float: left;">
-											   		<p>" . $assignments[$i] . "</p>
-											   </div>"';
-									}
-
-									for ($i = 1; $i <= $count; $i + 5){
-										echo '"<div style="width: 100px;float: left;">
-												   <a href="http://tevatron.prioritycoding.net/Byte/bytes.php?=" . $assignments[$i] . "">
-													   <p style="text-align: right;font-weight: bold;color: #0B5AA2;">Go!</p></a>
-											   </div>"';
-									}
-
-
 								}catch(PDOException $e){
 									$errorHad = true;
 									$error = "Seems we could not reach our servers! Please contact an admin.";
@@ -340,6 +342,8 @@ try{
 									array_push($classes, $return[0]['class8']);
 
 									$classes_clean = array_filter($classes);
+
+									
 
 									foreach ($classes_clean as $user_class){
 										$dbh = new PDO("mysql:host=prioritycodingcom.ipagemysql.com;dbname=tevatron", $sql_user, $sql_pass);
